@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/css/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="./assets/css/styles.css">
@@ -11,10 +13,10 @@
     <title>Project-1</title>
 </head>
 <body>
-    <div id="bg" class="jumbotron jumbotron-fluid">
+    <div id="bg" class="jumbotron jumbotron-fluid animated flip slow">
         <div  class="container">
-            <h1 class="display-3" id="h1">InfoTravel</h1>
-            <p class="lead">whatever you want to write here :) </p>
+            <h1 class="display-3" id="h1"></h1>
+            <p class="lead"></p>
         </div>
     </div>
     <div class="container">
@@ -23,10 +25,10 @@
             <div class="col-4">
                 <form>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="destination"  placeholder=" Readonly Where do you want to go">
-                        <small id="emailHelp" class="form-text text-muted">Where do you would like to go</small>
+                        <input type="text" class="form-control" id="destination"  placeholder="Where would like to go?">
+                        <small id="emailHelp" class="form-text text-muted"></small>
                     </div> 
-                    <button id="btn-sumit" type="submit" class="btn btn-primary">Submit</button>
+                    <button id="btn-submit" type="submit" class="btn btn-primary">Let's go!</button>
                 </form>
             </div>
             <div class="col-4"></div>
@@ -36,13 +38,8 @@
                  <img class="figure-img img-fluid rounded" src="https://images.unsplash.com/photo-1554328778-fec401eed287?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1275&q=80" alt="">  
             </div>
 
-            <div id="dump-pic-here " class="col-4">El Cairo
-                    Capital de Egipto
-                    DescripciónEl Cairo es la capital de Egipto y de su gobernación. Es la mayor ciudad del mundo árabe, de Oriente Próximo y de África, y los egipcios la denominan a menudo sencillamente con el nombre del país, مصر, pronunciado en árabe culto Misr y dialecto egipcio Masr. Wikipedia
-                    Superficie: 1,191 mi²
-                    Elevación: 75 ft
-                    Gobernador: Abdul Azim Wazir
-                    Población: 19.5 millones (octubre de 2018)  
+            <div id="dump-pic-here " class="col-4">
+                    <a class="teleport-widget-link" href="https://teleport.org/cities/aarhus/">Life quality score - Aarhus</a><script async class="teleport-widget-script" data-url="https://teleport.org/cities/aarhus/widget/scores/?currency=USD" data-max-width="770" data-height="977" src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
             </div>
             <div id="dump-weather-here  " class="col-4"> <img class="figure-img img-fluid rounded" src="https://image.freepik.com/vector-gratis/coleccion-iconos-tiempo_1167-124.jpg" alt=""> </div>
             
@@ -55,7 +52,12 @@
 
 
 
-    
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/js/mdb.min.js"></script>    
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/project1.js"></script>    
