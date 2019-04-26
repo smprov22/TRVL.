@@ -9,15 +9,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="./assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.4.0.js" integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo=" crossorigin="anonymous"></script>
     <title>Project-1</title>
 </head>
 <body>
-    <div id="bg" class="jumbotron jumbotron-fluid animated flip slow">
-        <div  class="container">
-            <h1 class="display-3" id="h1"></h1>
-            <p class="lead"></p>
-        </div>
+    <div id="bg" class="  animated flip slow">
+        
     </div>
     <div class="container">
         <div class="row">
@@ -28,23 +26,30 @@
                         <input type="text" class="form-control" id="destination"  placeholder="Where would like to go?">
                         <small id="emailHelp" class="form-text text-muted"></small>
                     </div> 
-                    <button id="btn-submit" type="submit" class="btn btn-primary">Let's go!</button>
+                    <button id="btn-submit" type="submit">Let's go!</button>
                 </form>
             </div>
             <div class="col-4"></div>
             
-        <div class="rowm d-flex flex-nowrap mt-2">
-            <div id="dump-pic-here " class="col-4">
-                 <img class="figure-img img-fluid rounded" src="https://images.unsplash.com/photo-1554328778-fec401eed287?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1275&q=80" alt="">  
-            </div>
+            <div class="rowm d-flex flex-nowrap mt-2">
+                <!-- imagen its going here -->
+                <div id="dump-pic-here " class="col-4"></div>
 
-            <div id="dump-pic-here " class="col-4">
-                    <a class="teleport-widget-link" href="https://teleport.org/cities/aarhus/">Life quality score - Aarhus</a><script async class="teleport-widget-script" data-url="https://teleport.org/cities/aarhus/widget/scores/?currency=USD" data-max-width="770" data-height="977" src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
+                <!-- information abpout the city here -->
+                <div id="dump-info-here " class="col-4"></div>
+
+                <!-- wheather hereeee -->
+                <div id="weather-here" class=" col-4 d-flex align-items-center justify-content-center flex-column">
+                    <div class="location m-3">
+                    </div>
+                    <div class="wind m-1">
+                    </div>
+                    <div class="temperature m-4">
+                        <h3 class="tmp-degree m-2"> </h3>
+                        <div class="temperature-description m-1 "></div>
+                    </div>
+                </div>    
             </div>
-            <div id="dump-weather-here  " class="col-4"> <img class="figure-img img-fluid rounded" src="https://image.freepik.com/vector-gratis/coleccion-iconos-tiempo_1167-124.jpg" alt=""> </div>
-            
-        </div>    
-        </div>
     </div>
 
 

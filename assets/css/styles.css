@@ -1,5 +1,6 @@
 body{
     background: white;
+    font-family: 'Quicksand', sans-serif;
 }
 h1{
     color: rgb(0, 0, 0);
@@ -7,13 +8,23 @@ h1{
 #bg{ 
     background: url(../images/trvl.png);
     background-position: center;
-    padding-bottom: 500px;
+    padding-bottom: 700px;
     background-repeat: no-repeat;
     background-size: cover;
 
 }
 #btn-submit{
     text-align: center;
+    display: block;
+    margin: 0 auto;
+    background: #4fbaf4;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px
+    
+
+
 }
 
 .form-control{
@@ -21,11 +32,7 @@ h1{
     border-left-color: white;
     border-right-color: white;
     text-align: center;
+    font-size: 20px;
 }
 
-#btn-submit{
-    display: block;
-    margin: 0 auto;
-    background-color: white;
-}
-    
+
