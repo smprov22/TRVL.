@@ -49,24 +49,24 @@ $.ajax({
  $(document).on("click", "#btn-submit", function(event){
    event.preventDefault();
    var city = $("#destination").val().trim().split(" ").join("+");
-
+   var citySafety = $("#destination").val().trim().split(" ").join("-");
    weatherApi(city);
    displayUnsplashImages(city);
    $("#destination").val("");
   //  outdoorWidget(city);
- safetyWidget(city);
+ safetyWidget(citySafety);
 
 
 });
 //--------------------------------------SAFETY WIDGET -------------------------------------->
 
-function safetyWidget(city){
+function safetyWidget(citySafety){
 //widget link changes via input
-$("a").attr("href", "https://teleport.org/cities/" + city)
+$("a").attr("href", "https://teleport.org/cities/" + citySafety)
 
 //widget url changes via input 
 $('iframe').attr("id", "widget")
-$("#widget").attr('src',"https://teleport.org/cities/" + city + "/widget/crime/?currency=USD")
+$("#widget").attr('src',"https://teleport.org/cities/" + citySafety + "/widget/crime/?currency=USD")
 
 //display on click 
 $("#dump-safety-here").show();
