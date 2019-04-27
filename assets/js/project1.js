@@ -53,38 +53,38 @@ $.ajax({
    weatherApi(city);
    displayUnsplashImages(city);
    $("#destination").val("");
-   outdoorWidget(city)
-
-//--------------------------------------SAFETY WIDGET -------------------------------------->
-// //widget link changes via input
-// var newLink = "https://teleport.org/cities/" + city 
-// $(".teleport-widget-link").attr("href", newLink); 
-
-// //widget url changes via input 
-// var newURL = "https://teleport.org/cities/" + city + "/widget/crime/?currency=USD"
-// $(".safety-widget-script").attr('data-url', newURL);
-
-// //display on click 
-// $("#dump-safety-here").show();
-
-//--------------------------------------OUTDOORS WIDGET -------------------------------------->
+  //  outdoorWidget(city);
+ safetyWidget(city);
 
 
 });
+//--------------------------------------SAFETY WIDGET -------------------------------------->
 
-
-
-function outdoorWidget(city){
+function safetyWidget(city){
+//widget link changes via input
 $("a").attr("href", "https://teleport.org/cities/" + city)
 
 //widget url changes via input 
 $('iframe').attr("id", "widget")
-$("#widget").attr('src', "https://teleport.org/cities/" + city + "/widget/outdoors/?currency=USD")
+$("#widget").attr('src',"https://teleport.org/cities/" + city + "/widget/crime/?currency=USD")
 
 //display on click 
-$("#dump-outdoor-here").show();
-   
+$("#dump-safety-here").show();
+
 }
+
+//--------------------------------------OUTDOORS WIDGET -------------------------------------->
+// function outdoorWidget(city){
+// $("a").attr("href", "https://teleport.org/cities/" + city)
+
+// //widget url changes via input 
+// $('iframe').attr("id", "widget")
+// $("#widget").attr('src', "https://teleport.org/cities/" + city + "/widget/outdoors/?currency=USD")
+
+// //display on click 
+// $("#dump-outdoor-here").show();
+   
+// }
 //---------------------------------------------UNSPLASH API------------------------------------------------>
 function displayUnsplashImages(city) {
   var queryURL = "https://api.unsplash.com/search/photos?page=1&query=" + city + "&client_id=98fa38e783accee54b2682447c53324d56d7375e2b0e7708a53172528b223ab7";
