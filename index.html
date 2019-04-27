@@ -29,17 +29,27 @@
                     <button id="btn-submit" type="submit">Let's go!</button>
                 </form>
             </div>
+        </div>
             <div class="col-4"></div>
             
-            <div class="rowm d-flex flex-nowrap mt-2">
+            <div class="row d-flex flex-nowrap mt-2">
                 <!-- imagen its going here -->
-                <div id="dump-pic-here " class="col-4"></div>
+                <div id="dump-pic-here " class="col-3"></div>
 
-                <!-- information abpout the city here -->
-                <div id="dump-info-here " class="col-4"></div>
+                <!-- Safety Widget -->
+                <div id="dump-safety-here" class="col-3">
+                        <a id="safety" class="teleport-widget-link">SAFETY</a><script async class="safety-widget-script" data-max-width="420" data-height="841"  src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
+                
+                </div>
+                 <!-- Outdoors Widget -->
+                 <div id="dump-outdoor-here" class="col-3">
+                        <a class="teleport-widget-link">THE GREAT OUTDOORS</a><script async class="outdoor-widget-script" data-max-width="420" data-height="819" src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
+                
+                </div>
+                
 
                 <!-- wheather hereeee -->
-                <div id="weather-here" class=" col-4 d-flex align-items-center justify-content-center flex-column">
+                <div id="weather-here" class=" col-3 d-flex align-items-center justify-content-center flex-column">
                     <div class="location m-3">
                     </div>
                     <div class="wind m-1">
@@ -63,6 +73,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/js/mdb.min.js"></script>    
+<script src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/project1.js"></script>    
