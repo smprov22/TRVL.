@@ -3,6 +3,8 @@ $("#dump-safety-here").hide();
 $("#dump-outdoor-here").hide();
 
 
+
+
 //--------------------------------------WEATHER API ---------------------------------------->
 function weatherApi(city){
 var APIKey = "166a433c57516f51dfab1f7edaed8413";
@@ -44,11 +46,13 @@ $.ajax({
 
 
 //--------------------------------------onClick event---------------------------------------->
- $("#btn-submit").on("click", function(event){
+ $("button").on("click", function(event){
    event.preventDefault();
-
    var city = $("#destination").val().trim().split(" ").join("+");
+
    weatherApi(city);
+   displayUnsplashImages(city);
+   $("#destination").val("");
 
 
 //--------------------------------------SAFETY WIDGET -------------------------------------->
@@ -79,3 +83,26 @@ $("#dump-outdoor-here").show();
 //  var scriptLink = $( this ).addClass("teleport-widget-script").attr("data-url", "https://teleport.org/cities/" + city + "/widget/crime/?currency=USD").attr("src", "https://teleport.org/assets/firefly/widget-snippet.min.js");
 
 //  $(".teleport-widget-link").html(widgetLink, scriptLink);
+
+//---------------------------------------------UNSPLASH API------------------------------------------------>
+function displayUnsplashImages(city) {
+  var queryURL = "https://api.unsplash.com/search/photos?page=1&query=" + city + "&client_id=98fa38e783accee54b2682447c53324d56d7375e2b0e7708a53172528b223ab7";
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function (response) {
+    console.log(response);
+    $("#dump-pic-here").empty();
+    var results = response.results;
+    for (var i = 0; i < results.length; i++) {
+      var imgDiv = $("<div>");
+      imgDiv.addClass("imgClass");
+      var showImage = $("<img>");
+      showImage.attr("src", results[i].urls.thumb);
+      showImage.addClass("pic");
+      imgDiv.prepend(showImage);
+
+      $("#dump-pic-here").prepend(imgDiv);
+    };
+  })
+}
