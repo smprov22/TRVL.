@@ -46,44 +46,45 @@ $.ajax({
 
 
 //--------------------------------------onClick event---------------------------------------->
- $("button").on("click", function(event){
+ $(document).on("click", "#btn-submit", function(event){
    event.preventDefault();
    var city = $("#destination").val().trim().split(" ").join("+");
 
    weatherApi(city);
    displayUnsplashImages(city);
    $("#destination").val("");
-
+   outdoorWidget(city)
 
 //--------------------------------------SAFETY WIDGET -------------------------------------->
-//widget link changes via input
-var newLink = "https://teleport.org/cities/" + city 
-$(".teleport-widget-link").attr("href", newLink); 
+// //widget link changes via input
+// var newLink = "https://teleport.org/cities/" + city 
+// $(".teleport-widget-link").attr("href", newLink); 
 
-//widget url changes via input 
-var newURL = "https://teleport.org/cities/" + city + "/widget/crime/?currency=USD"
-$(".safety-widget-script").attr('data-url', newURL);
+// //widget url changes via input 
+// var newURL = "https://teleport.org/cities/" + city + "/widget/crime/?currency=USD"
+// $(".safety-widget-script").attr('data-url', newURL);
 
-//display on click 
-$("#dump-safety-here").show();
+// //display on click 
+// $("#dump-safety-here").show();
 
 //--------------------------------------OUTDOORS WIDGET -------------------------------------->
 
+
+});
+
+
+
+function outdoorWidget(city){
+$("a").attr("href", "https://teleport.org/cities/" + city)
+
 //widget url changes via input 
-$(".outdoor-widget-script").attr('data-url', "https://teleport.org/cities/" + city + "/widget/outdoors/?currency=USD")
+$('iframe').attr("id", "widget")
+$("#widget").attr('src', "https://teleport.org/cities/" + city + "/widget/outdoors/?currency=USD")
 
 //display on click 
 $("#dump-outdoor-here").show();
-
- });
-
-
-
-//  var widgetLink = $('<a>').addClass("teleport-widget-link").attr("href", "https://teleport.org/cities/" + city)
-//  var scriptLink = $( this ).addClass("teleport-widget-script").attr("data-url", "https://teleport.org/cities/" + city + "/widget/crime/?currency=USD").attr("src", "https://teleport.org/assets/firefly/widget-snippet.min.js");
-
-//  $(".teleport-widget-link").html(widgetLink, scriptLink);
-
+   
+}
 //---------------------------------------------UNSPLASH API------------------------------------------------>
 function displayUnsplashImages(city) {
   var queryURL = "https://api.unsplash.com/search/photos?page=1&query=" + city + "&client_id=98fa38e783accee54b2682447c53324d56d7375e2b0e7708a53172528b223ab7";
