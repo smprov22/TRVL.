@@ -106,3 +106,4 @@ function displayUnsplashImages(city) {
     };
   })
 }
+
