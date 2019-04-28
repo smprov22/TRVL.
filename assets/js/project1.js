@@ -50,11 +50,17 @@ $.ajax({
    event.preventDefault();
    var city = $("#destination").val().trim().split(" ").join("+");
    var citySafety = $("#destination").val().trim().split(" ").join("-");
+   
+   database.collection("cities").add({
+     city: $("#destination").val().trim()
+   });
+
    weatherApi(city);
    displayUnsplashImages(city);
-   $("#destination").val("");
+   safetyWidget(citySafety);
   //  outdoorWidget(city);
- safetyWidget(citySafety);
+  
+  $("#destination").val("");
 
 
 });
@@ -108,3 +114,46 @@ function displayUnsplashImages(city) {
   })
 }
 
+//----------------------------------------FIREBASE----------------------------------->
+
+var config = {
+  apiKey: "AIzaSyCa4ZBcq_w_ZNknHJM4ZBKh1bWU8zzlnLU",
+  authDomain: "trvl-93a60.firebaseapp.com",
+  databaseURL: "https://trvl-93a60.firebaseio.com",
+  projectId: "trvl-93a60",
+  storageBucket: "trvl-93a60.appspot.com",
+};
+firebase.initializeApp(config);
+
+var database = firebase.firestore();
+var citySearch = $("#previousCities")
+
+function displayCities(doc) {
+  var li = $("<li>");
+  var cityName = $("<span>");
+
+  $(li).attr("data-id", doc.id);
+  $(cityName).text(doc.data().city);
+
+  $(li).append(cityName);
+
+  $(citySearch).append(li);
+}
+
+//Getting Data
+// database.collection("cities").get().then(function(snapshot) {
+//   snapshot.docs.forEach(doc => {
+//     displayCities(doc);
+//   })
+// })
+database.collection("cities").onSnapshot(snapshot => {
+  var changes = snapshot.docChanges();
+  changes.forEach(change => {
+    if (change.type == "added") {
+      displayCities(change.doc);
+    } else if (change.type == "removed") {
+      var li = $(citySearch).data("[id=" + change.doc.id + ']');
+      citySearch.remove(li);
+    }
+  })
+})
