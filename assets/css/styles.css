@@ -7,7 +7,7 @@ h1{
 }
 #bg{ 
     background: url(../images/trvl.png);
-    background-position: center;
+    background-position: absolute;
     padding-bottom: 700px;
     background-repeat: no-repeat;
     background-size: cover;
@@ -22,10 +22,8 @@ h1{
     color: white;
     border-radius: 10px;
     font-size: 20px
-    
-
-
 }
+
 
 .form-control{
     border-top-color: white;
@@ -35,4 +33,9 @@ h1{
     font-size: 20px;
 }
 
-
+#delete-button{
+    margin: auto;
+    color: rgba(0,0,0,.03);
+    color: red;
+    padding: 10px;
+}

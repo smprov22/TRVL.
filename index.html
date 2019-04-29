@@ -11,10 +11,11 @@
     <link rel="stylesheet" href="./assets/css/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.4.0.js" integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <title>Project-1</title>
 </head>
 <body>
-    <div id="bg" class="  animated flip slow">
+    <div id="bg" class="animated flip slow">
         
     </div>
     <div class="container">
@@ -26,48 +27,113 @@
                         <input type="text" class="form-control" id="destination"  placeholder="Where would like to go?">
                         <small id="emailHelp" class="form-text text-muted"></small>
                     </div> 
-                    <button id="btn-submit" type="submit">Let's go!</button>
+                    <button id="btn-submit" type="submit" href="#dump-pic-here" >Let's go!</button>
                 </form>
             </div>
-            <div class="col-4"></div>
-            
-            <div class="rowm d-flex flex-nowrap mt-2">
-                <!-- imagen its going here -->
-                <div id="dump-pic-here " class="col-4"></div>
-
-                <!-- information abpout the city here -->
-                <div id="dump-info-here " class="col-4"></div>
-
-                <!-- wheather hereeee -->
-                <div id="weather-here" class=" col-4 d-flex align-items-center justify-content-center flex-column">
-                    <div class="location m-3">
-                    </div>
-                    <div class="wind m-1">
-                    </div>
-                    <div class="temperature m-4">
-                        <h3 class="tmp-degree m-2"> </h3>
-                        <div class="temperature-description m-1 "></div>
-                    </div>
-                </div>    
+        </div>
+    <!----------------COLLAPSE CARD-------------->
+      <div id="collapse">
+        <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"></button>
+                <!---------------------BUTON TO DELETE FIREBASE DATA-------->
+                <button id="delete-button"class="btn" type="button">X</button>
+              </h2>
             </div>
+        <!----------------COLLAPSE CONTENT-------------->
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                <div class="col-4"></div>
+                
+                <div class="row d-flex flex-nowrap mt-2">
+                    <!-- image is going here -->
+                    <div id="dump-pic-here" class="col-3"></div>
+
+                    <!-- Safety Widget -->
+                    <div id="dump-safety-here" class="col-3">
+                            <!-- <a class="teleport-widget-link" href="https://teleport.org/cities/aarhus/">Safety - Aarhus</a><script async class="teleport-widget-script" data-url="https://teleport.org/cities/aarhus/widget/crime/?currency=USD&citySwitcher=false" data-max-width="420" data-height="826" src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script> -->
+                                  
+                      </div>
+                      <!-- Outdoors Widget -->
+                      <div id="dump-outdoor-here" class="col-3">
+                              <a class="teleport-widget-link" href="https://teleport.org/cities/aarhus/">Outdoors - Aarhus</a><script async class="teleport-widget-script" data-url="https://teleport.org/cities/aarhus/widget/outdoors/?currency=USD&citySwitcher=false" data-max-width="420" data-height="804" src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
+                            
+                      </div>
+                      
+
+                      <!-- wheather hereeee -->
+                      <div id="weather-here" class=" col-3 d-flex align-items-center justify-content-center flex-column">
+                          <div class="location m-3">
+                          </div>
+                          <div class="wind m-1">
+                          </div>
+                          <div class="temperature m-4">
+                              <h3 class="tmp-degree m-2"> </h3>
+                              <div class="temperature-description m-1 "></div>
+                          </div>
+                      </div>    
+                  </div>
+                  <div id="fbCities">
+                    <!-- <ul id="previousCities"> Turned off for testing --> 
+                      
+                    <!-- </ul> -->
+                  </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+
+<!-- Footer -->
+<footer class="page-footer font-small stylish-color-dark pt-4">
+
+    <!-- Social buttons -->
+    <ul class="list-unstyled list-inline text-center">
+      <li class="list-inline-item">
+        <a href="https://github.com/smprov22" class="btn-floating btn-fb mx-1">
+          <i class="fab fa-github"> Stephanie Provence</i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a href="https://github.com/Eddsonblanco"  class="btn-floating btn-tw mx-1">
+          <i class="fab fa-github"> Eddson Blanco</i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a href="https://github.com/kellidragon" class="btn-floating btn-dribbble mx-1">
+          <i class="fab fa-github"> Kelli Dragon</i>
+        </a>
+      </li>
+    </ul>
+    <!-- Social buttons -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright
+     
     </div>
+    <!-- Copyright -->
 
+</footer>
+<!-- Footer -->
 
-
-
-
-
+<!--Firebase script link-->
+<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-firestore.js"></script>
 <!-- Bootstrap tooltips -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
 <!-- Bootstrap core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/js/mdb.min.js"></script>    
+<script src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/project1.js"></script>    
 </head>
-<body>
     
 </body>
 </html>
