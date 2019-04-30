@@ -180,21 +180,21 @@ function displayCities(doc) {
 
   $(citySearch).append(li);
 
-  //delete cities
-  // deleteCity.addEventListner("click", (e) => {
-  //   id = e.target.parentElement.getAttribute("data-id");
-  //   db.collection("cities").doc(id).delete();
-  // })
+  // delete cities
+  deleteCity.addEventListner("click", (e) => {
+    id = e.target.parentElement.getAttribute("data-id");
+    db.collection("cities").doc(id).delete();
+  })
 }
 
-database.collection("cities").onSnapshot(snapshot => {
-  var changes = snapshot.docChanges();
-  changes.forEach(change => {
-    if (change.type == "added") {
-      displayCities(change.doc);
-    } else if (change.type == "removed") {
-      var li = $(citySearch).data("[id=" + change.doc.id + ']');
-      citySearch.remove(li);
-    }
-  })
-})
+// database.collection("cities").onSnapshot(snapshot => {
+//   var changes = snapshot.docChanges();
+//   changes.forEach(change => {
+//     if (change.type == "added") {
+//       displayCities(change.doc);
+//     } else if (change.type == "removed") {
+//       var li = $(citySearch).data("[id=" + change.doc.id + ']');
+//       citySearch.remove(li);
+//     }
+//   })
+// })
