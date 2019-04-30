@@ -62,7 +62,6 @@ $.ajax({
   
   $("#destination").val("");
 
-
 });
 //--------------------------------------SAFETY WIDGET -------------------------------------->
 
@@ -131,21 +130,24 @@ var citySearch = $("#previousCities")
 function displayCities(doc) {
   var li = $("<li>");
   var cityName = $("<span>");
+  // var deleteCity = $("<div>");
 
   $(li).attr("data-id", doc.id);
   $(cityName).text(doc.data().city);
+  // $(deleteCity).text("x");
 
   $(li).append(cityName);
+  // $(li).append(deleteCity);
 
   $(citySearch).append(li);
+
+  //delete cities
+  // deleteCity.addEventListner("click", (e) => {
+  //   id = e.target.parentElement.getAttribute("data-id");
+  //   db.collection("cities").doc(id).delete();
+  // })
 }
 
-//Getting Data
-// database.collection("cities").get().then(function(snapshot) {
-//   snapshot.docs.forEach(doc => {
-//     displayCities(doc);
-//   })
-// })
 database.collection("cities").onSnapshot(snapshot => {
   var changes = snapshot.docChanges();
   changes.forEach(change => {
