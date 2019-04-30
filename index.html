@@ -15,7 +15,7 @@
     <title>Project-1</title>
 </head>
 <body>
-    <div id="bg" class="  animated flip slow">
+    <div id="bg" class="animated flip slow">
         
     </div>
     <div class="container">
@@ -24,43 +24,56 @@
             <div class="col-4">
                 <form>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="destination"  placeholder="Where would like to go?">
+                        <input type="text" class="form-control" id="destination"  placeholder="What city would like to see?">
                         <small id="emailHelp" class="form-text text-muted"></small>
                     </div> 
                     <button id="btn-submit" type="submit" href="#dump-pic-here" >Let's go!</button>
                 </form>
             </div>
         </div>
+    <!----------------COLLAPSE CARD-------------->
+      <div id="collapse">
             <div class="col-4"></div>
-            
-            <div class="row d-flex flex-nowrap mt-2">
-                <!-- image is going here -->
-                <div id="dump-pic-here" class="col-3"></div>
-
-                <!-- Safety Widget -->
-                <div id="dump-safety-here" class="col-3">
-                        <a class="teleport-widget-link" href="https://teleport.org/cities/aarhus/">Safety - Aarhus</a><script async class="teleport-widget-script" data-url="https://teleport.org/cities/aarhus/widget/crime/?currency=USD&citySwitcher=false" data-max-width="420" data-height="826" src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
-                        
-                </div>
-                 <!-- Outdoors Widget -->
-                 <div id="dump-outdoor-here" class="col-3">
-                        <!-- <a class="teleport-widget-link" href="https://teleport.org/cities/aarhus/">Outdoors - Aarhus</a><script async class="teleport-widget-script" data-url="https://teleport.org/cities/aarhus/widget/outdoors/?currency=USD&citySwitcher=false" data-max-width="420" data-height="804" src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script> -->
-                        <!-- <a class="teleport-widget-link">THE GREAT OUTDOORS</a><script async class="outdoor-widget-script" data-max-width="420" data-height="819" src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
-                 -->
-                </div>
                 
+                <div class="row d-flex flex-nowrap mt-2">
 
-                <!-- wheather hereeee -->
-                <div id="weather-here" class=" col-3 d-flex align-items-center justify-content-center flex-column">
-                    <div class="location m-3">
+                    <!-- image is going here -->
+                    <div id="dump-pic-here" class="col-12"></div>
+
+                    <!-- Safety Widget -->
+                    <!-- <div id="dump-safety-here" class="col-6"> -->
+                            <!-- <a class="teleport-widget-link" href="https://teleport.org/cities/aarhus/">Safety - Aarhus</a><script async class="teleport-widget-script" data-url="https://teleport.org/cities/aarhus/widget/crime/?currency=USD&citySwitcher=false" data-max-width="420" data-height="826" src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script> -->
+                                  
+                      </div>
+                      <!-- Outdoors Widget -->
+                      <div id="dump-outdoor-here" class="col-6">
+                              <a class="teleport-widget-link" href="https://teleport.org/cities/aarhus/">Outdoors - Aarhus</a><script async class="teleport-widget-script" data-url="https://teleport.org/cities/aarhus/widget/outdoors/?currency=USD&citySwitcher=false" data-max-width="420" data-height="804" src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
+                            
+                      </div>
+                      
+
+                      <!-- weather hereeee -->
+                      <div id="weather-here" class=" col-6 d-flex align-items-center justify-content-center flex-column">
+                          <div class="location m-3">
+                          </div>
+                          <div class="wind m-1">
+                          </div>
+                          <div class="temperature m-4">
+                              <h3 class="tmp-degree m-2"> </h3>
+                              <div class="temperature-description m-1 "></div>
+                          </div>
+                      </div>    
+                  </div>
+                  <div id="fbCities">
+                    <!-- <ul id="previousCities"> Turned off for testing --> 
+                      
+                    <!-- </ul> -->
+                  </div>
+               
+                     
                     </div>
-                    <div class="wind m-1">
-                    </div>
-                    <div class="temperature m-4">
-                        <h3 class="tmp-degree m-2"> </h3>
-                        <div class="temperature-description m-1 "></div>
-                    </div>
-                </div>    
+                  </div>
+                </div>
             </div>
             <div id="fbCities">
               <ul id="previousCities">

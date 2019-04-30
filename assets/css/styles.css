@@ -33,3 +33,9 @@ h1{
     font-size: 20px;
 }
 
+#delete-button{
+    margin: auto;
+    color: rgba(0,0,0,.03);
+    color: red;
+    padding: 10px;
+}
