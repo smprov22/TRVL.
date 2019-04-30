@@ -1,9 +1,7 @@
 //hide widget on page load
 $("#dump-safety-here").hide();
 $("#dump-outdoor-here").hide();
-$(".card-header").hide();
-$(".card-body").hide();
-
+$("#weather-here").hide();
 
 
 
@@ -30,10 +28,10 @@ $.ajax({
    console.log(response);
 
    // Transfer content to HTML
-   
-   $(".location").html("<h2>" + response.name + "</h2>");
-   $(".wind").text("Wind Speed: " + Math.floor(response.wind.speed)) ;
-   $(".tmp-degree").text("Temperature (F) " + Math.floor(response.main.temp) + "º");
+
+   $(".location").html("<h2>" + response.name + "</h2>"); 
+   $(".wind").text("Wind Speed: " + Math.floor(response.wind.speed)) ; 
+   $(".tmp-degree").text("Temperature (F) " + Math.floor(response.main.temp) + "º"); 
    $(".temperature-description").text( response.weather[0].description );
 
    // Log the data in the console as well
@@ -41,6 +39,7 @@ $.ajax({
    console.log("Humidity: " + response.main.humidity);
    console.log("Temperature: " + response.main.temp);
    console.log("Description" + response.weather[0].description);
+   $("#weather-here").show();
  });
 };
 
@@ -60,44 +59,49 @@ $.ajax({
 
    weatherApi(city);
    displayUnsplashImages(city);
-  //  safetyWidget(citySafety);
-   outdoorWidget(cityOutdoors);
+   outdoorWidget(cityOutdoors); 
+   addCard(city);
+  //safetyWidget(citySafety); (may add back at a later date)
   
   $("#destination").val("");
+
+  // hide jumbotron on click
   $("#bg").fadeOut("slow");
 
-  $(".card-header").show();
-  $(".card-body").show();
+  //----------------------------------------STORES ELEMENTS INSIDE CARD -------------------->
+  
+  //unsplash photos
+  $('.card-body').html($("#dump-pic-here"));
 
-  $(".btn-link").text("YOUR TRIP TO " + city);
+  //outdoor widget
+  $('.card-body').append($("#dump-outdoor-here"));
 
-
-//-------------------------------creates a new collapsable card on click-------------------------->
-
-// var accordionDiv = $('<div>').addClass("accordion").attr("id", "accordionExample")
-// var cardDiv = $('<div>').addClass("card")
-// var cardHeaderDiv = $('<div>').addClass("card-header").attr("id", "headingOne")
-// var hDiv = $('<h2>').addClass("mb-0");
-// var button =$('<button>').addClass("btn btn-link").attr("type", "button").attr("data-toggle", "collapse").attr("data-target", "#collapseOne").attr("aria-expanded", "true").attr("aria-controls", "collapseOne")
-
-// $(".collapseAll").html(accordionDiv);
-// $(".collapseAll").append(cardDiv)  
-// $(".collapseAll").append(cardHeaderDiv) 
-// $(".collapseAll").append(hDiv) 
-// $(".collapseAll").append(button) 
-
-// //---------Collapse Content -------------------------->
-// var collapseDiv = $('<div>').addClass("collapse show").attr("id", "collapseOne").attr("aria-labelledby", "headingOne").attr("data-parent", "#accordionExample")
-// var cardBodyDiv =$('<div>').addClass("card-body")
-
-// $(".collapse-content").html(collapseDiv);
-// $(".collapse-content").append(cardBodyDiv);
-
-
-
+  //weather
+  $('.card-body').append($("#weather-here"));
+ 
 });
 
 
+//------------------------------------------------NEW CARD---------------------------------------->
+
+var addCard = function(city){
+
+  var newCard =$('<div id="collapse"><div class="accordion" id="accordionExample">'
+  + '<div class="card"><div class="card-header" id="headingOne"><h2 class="mb-0">' +
+  '<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">'
+  + 'YOUR TRIP TO ' + city +'</button><button id="delete-button"class="btn" type="button">' + 'X' + '</button>' +
+  '</h2></div><div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample"><div class=" row card-body">')
+            
+  $('#collapse').prepend(newCard);
+
+  //-----------deletes card on click---------------->
+  $('#delete-button').on('click', function(e){
+    e.stopPropagation();  
+        var deleteCard = $(this).closest('.card');
+        deleteCard.hide('slow', function(){ deleteCard.remove(); });
+  });
+  
+}
 //--------------------------------------SAFETY WIDGET -------------------------------------->
 
 // function safetyWidget(citySafety){
