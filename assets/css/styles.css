@@ -14,9 +14,7 @@ h1{
     max-width: 500px;
     padding-bottom: 200px;
     padding-top: 50px;
-    margin: 0 auto;
-
-   
+    margin: 0 auto;  
    
 }
 
@@ -25,8 +23,11 @@ h1{
     width: 100%;
     background-size: auto;
     height: auto;
-
+    z-index: 1;
+    position: relative;
 }
+
+
 #btn-submit{
     text-align: center;
     display: block;
