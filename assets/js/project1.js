@@ -126,7 +126,7 @@ function outdoorWidget(cityOutdoors){
 
 //widget url changes via input 
 $('iframe').attr("id", "widget")
-$("#widget").attr('src', "https://teleport.org/cities/" + cityOutdoors + "/widget/outdoors/?currency=USD")
+$("#widget").attr('src', "https://teleport.org/cities/" + cityOutdoors + "/widget/outdoors/?currency=USD&citySwitcher=false")
 
 //display on click 
 $("#dump-outdoor-here").show();
