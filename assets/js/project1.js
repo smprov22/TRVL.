@@ -146,7 +146,7 @@ function displayUnsplashImages(city) {
       var imgDiv = $("<div>");
       imgDiv.addClass("carousel-item");
       var showImage = $("<img>");
-      showImage.attr("src", results[i].urls.regular);
+      showImage.attr("src", results[i].urls.regular +  "&w=1000&h=600");
       showImage.addClass("d-block");
       imgDiv.prepend(showImage);
  
