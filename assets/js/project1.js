@@ -29,16 +29,17 @@ $.ajax({
 
    // Transfer content to HTML
 
-   $(".location").html("<h2>" + response.name + "</h2>"); 
-   $(".wind").text("Wind Speed: " + Math.floor(response.wind.speed)) ; 
-   $(".tmp-degree").text("Temperature (F) " + Math.floor(response.main.temp) + "º"); 
+   $(".location").html("<h2>" + response.name + "</h2>").prepend('<i class="fas i fa-globe-americas"></i>');
+   $("#CWeather").html(" Currently Weather").prepend('<i class="fas i fa-cloud-sun"></i>') 
+   $(".wind").text(" Wind Speed: " + Math.floor(response.wind.speed)).prepend('<i class="fas i fa-wind"></i>') ; 
+   $(".tmp-degree").text(" Temperature (F) " + Math.floor(response.main.temp) + "º").prepend('<i  class="fas i fa-temperature-high"></i>'); 
    $(".temperature-description").text( response.weather[0].description );
 
    // Log the data in the console as well
-   console.log("Wind Speed: " + response.wind.speed);
-   console.log("Humidity: " + response.main.humidity);
-   console.log("Temperature: " + response.main.temp);
-   console.log("Description" + response.weather[0].description);
+   console.log(" Wind Speed: " + response.wind.speed);
+   console.log(" Humidity: " + response.main.humidity);
+   console.log(" Temperature: " + response.main.temp);
+   console.log(" Description" + response.weather[0].description);
    $("#weather-here").show();
  });
 };
@@ -84,24 +85,26 @@ $.ajax({
 
 //------------------------------------------------NEW CARD---------------------------------------->
 
+var i = 1;
 var addCard = function(city){
-
-  var newCard =$('<div id="collapse"><div class="accordion" id="accordionExample">'
+  var cityDisplay = $("#destination").val().trim();
+ 
+  var newCard =$(`<div id="collapse${i}"><div class="accordion" >`
   + '<div class="card"><div class="card-header" id="headingOne"><h2 class="mb-0">' +
   '<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">'
-  + 'YOUR TRIP TO ' + city +'</button><button id="delete-button"class="btn" type="button">' + 'X' + '</button>' +
+  + 'YOUR TRIP TO ' + cityDisplay +'</button><button id="delete-button"class="btn" type="button">' + 'X' + '</button>' +
   '</h2></div><div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample"><div class=" row card-body">')
-            
+ i++
   $('#collapse').prepend(newCard);
-
+ 
   //-----------deletes card on click---------------->
   $('#delete-button').on('click', function(e){
-    e.stopPropagation();  
-        var deleteCard = $(this).closest('.card');
-        deleteCard.hide('slow', function(){ deleteCard.remove(); });
+    e.stopPropagation();
+    var deleteCard = $(this).closest('.card');
+    deleteCard.hide('slow', function(){ deleteCard.remove(); });
   });
-  
-}
+ 
+ }
 //--------------------------------------SAFETY WIDGET -------------------------------------->
 
 // function safetyWidget(citySafety){
@@ -151,6 +154,8 @@ function displayUnsplashImages(city) {
     };
   })
 }
+
+console.log(displayUnsplashImages);
 
 //----------------------------------------FIREBASE----------------------------------->
 
