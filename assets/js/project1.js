@@ -49,7 +49,6 @@ $.ajax({
   //  var citySafety = $("#destination").val().trim().split(" ").join("-");
    var cityOutdoors = $("#destination").val().trim().split(" ").join("-");
    var lower = cityOutdoors.toLowerCase();
-   var city2 = $("#destination").val().trim()
 
    if (city === ""){
     alert("Must enter text in the box"); //NEED TO CHANGE TO SOMETHING OTHER THAN AN ALERT!!
@@ -63,7 +62,6 @@ $.ajax({
    weatherApi(city);
    displayUnsplashImages(city);
    outdoorWidget(lower); 
-   displayCities(city2);
   //  addCard(city);
   //safetyWidget(citySafety); (may add back at a later date)
   
@@ -147,17 +145,18 @@ firebase.initializeApp(config);
 var database = firebase.firestore();
 
 function displayCities(doc) {
-  console.log(doc);
   var newRow = $("<tr>").append(
     $("<td>").text("You searched " + (doc.data().city)),
     $("<button>").text("x").addClass("delete-button").attr("data-id", doc.id),
     );
-    $("#info").append(newRow)
+    $("#info").prepend(newRow)
   }
 
-//Getting Data
-database.collection("cities").get().then(function(snapshot) {
-  snapshot.docs.forEach(doc => {
-    displayCities(doc);
+  database.collection("cities").onSnapshot(snapshot => {
+    var changes = snapshot.docChanges();
+    changes.forEach(change => {
+      if (change.type == "added") {
+        displayCities(change.doc);
+      }
+    })
   })
-})
