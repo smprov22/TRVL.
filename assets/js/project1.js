@@ -122,7 +122,7 @@ var addCard = function(city){
 
 //--------------------------------------OUTDOORS WIDGET -------------------------------------->
 function outdoorWidget(cityOutdoors){
-$("a").attr("href", "https://teleport.org/cities/" + cityOutdoors)
+  $("a.teleport-widget-link").attr("href", "https://teleport.org/cities/" + cityOutdoors)
 
 //widget url changes via input 
 $('iframe').attr("id", "widget")
@@ -140,22 +140,21 @@ function displayUnsplashImages(city) {
     method: "GET"
   }).then(function (response) {
     console.log(response);
-    $("#dump-pic-here").empty();
+    $(".carousel-inner").empty();
     var results = response.results;
     for (var i = 0; i < results.length; i++) {
       var imgDiv = $("<div>");
-      imgDiv.addClass("imgClass");
+      imgDiv.addClass("carousel-item");
       var showImage = $("<img>");
-      showImage.attr("src", results[i].urls.thumb);
-      showImage.addClass("pic");
+      showImage.attr("src", results[i].urls.regular);
+      showImage.addClass("d-block");
       imgDiv.prepend(showImage);
-
-      $("#dump-pic-here").prepend(imgDiv);
+ 
+      $(".carousel-inner").append(imgDiv);
     };
+    $('.carousel-item').first().addClass('active');
   })
-}
-
-console.log(displayUnsplashImages);
+ }
 
 //----------------------------------------FIREBASE----------------------------------->
 
