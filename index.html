@@ -16,25 +16,42 @@
     <title>TRVL - WRITE A SIMPLE MSJ HERE </title>
 </head>
 <body>
-    <div id="bg" class="animated flip slow">
-        <img src="assets/images/globe.png" class="globe">
+  <div id="bg" class="animated flip slow">
+      <img src="assets/images/globe.png" class="globe">
+  </div>
+  <div class="container">
+      <div class="row">
+          <div class="col-4"></div>
+          <div class="col-4">
+              <form>
+                  <div class="form-group">
+                      <input type="text" class="form-control mt-4" id="destination"  placeholder="What city would you like to see?">
+                      <small id="emailHelp" class="form-text text-muted"></small>
+                  </div> 
+                  <button id="btn-submit" type="submit" href="#dump-pic-here" >Let's go!</button>
+              </form>
+          </div>
+        </form>
+      </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-4"></div>
-            <div class="col-4">
-                <form>
-                    <div class="form-group">
-                        <input type="text" class="form-control mt-4" id="destination"  placeholder="What city would like to see?">
-                        <small id="emailHelp" class="form-text text-muted"></small>
-                    </div> 
-                    <button id="btn-submit" type="submit" href="#dump-pic-here" >Let's go!</button>
-                </form>
-            </div>
-        </div>
-  
-      <div  class="row">
-                
+    <!----------------Previous Searches-------------->
+    <div class="row">
+    
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Previous Searches</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody id="info">
+    
+          </tbody>
+        </table>
+      </div>
+      <!-------------------CAROUSEL---------------------->
+
         <div class="col-12 d-flex flex-wrap mt-2" id="dump-pic-here">
           <!--Carousel starter code, need to link up src to jquery-->
           <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
@@ -51,37 +68,27 @@
             </a>
           </div>
         </div>
-                      <!-- Outdoors Widget -->
-                      <div id="dump-outdoor-here" class="col-6">
-                              <a class="teleport-widget-link" href="https://teleport.org/cities/aarhus/"></a><script async class="teleport-widget-script" data-url="https://teleport.org/cities/aarhus/widget/outdoors/?currency=USD&citySwitcher=false" data-max-width="420" data-height="804" src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
-                      </div>
-                      
-
-                      <!-- weather hereeee -->
-                      <div id="weather-here" class=" col-6 d-flex align-items-center   flex-column">
-                          <h3 id="CWeather"></h3>
-                          <div class="location m-4">
-                          </div>
-                          <div class="wind m-3">
-                          </div>
-                          <div class="temperature m-4">
-                              <h3 class="tmp-degree m-3"> </h3>
-                              <div class="temperature-description m-1 "></div>
-                          </div>
-                      </div>    
-                  </div>
-                  <!-- <div id="fbCities"> -->
-                    <!-- <ul id="previousCities"> Turned off for testing --> 
-                      
-                    <!-- </ul> -->
-                  <!-- </div> -->
-               
-                     
-                    </div>
-                  </div>
-                </div>
-            </div>
-          
+        <!-- Outdoors Widget -->
+        <div id="dump-outdoor-here" class="col-6">
+          <a class="teleport-widget-link" href="https://teleport.org/cities/aarhus/"></a>
+          <script async class="teleport-widget-script"
+            data-url="https://teleport.org/cities/aarhus/widget/outdoors/?currency=USD&citySwitcher=false" data-max-width="420"
+            data-height="804" src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
+        </div>
+        
+        
+        <!-- weather hereeee -->
+        <div id="weather-here" class=" col-6 d-flex align-items-center   flex-column">
+          <h3 id="CWeather"></h3>
+          <div class="location m-4">
+          </div>
+          <div class="wind m-3">
+          </div>
+          <div class="temperature m-4">
+            <h3 class="tmp-degree m-3"> </h3>
+            <div class="temperature-description m-1 "></div>
+          </div>
+        </div>
     </div>
 
 <!-- Footer -->
