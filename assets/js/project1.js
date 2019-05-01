@@ -65,10 +65,10 @@ $.ajax({
   
   $("#destination").val("");
 
-});
+  // hide jumbotron on click
+  $("#bg").fadeOut("slow");
 
-
- //----------------------------------------STORES ELEMENTS INSIDE CARD -------------------->
+  //----------------------------------------STORES ELEMENTS INSIDE CARD -------------------->
   
   //unsplash photos
   $('.card-body').html($("#dump-pic-here"));
@@ -79,10 +79,10 @@ $.ajax({
   //weather
   $('.card-body').append($("#weather-here"));
  
+});
 
 
-
-  //------------------------------------------------NEW CARD---------------------------------------->
+//------------------------------------------------NEW CARD---------------------------------------->
 
 var addCard = function(city){
 
@@ -169,32 +169,29 @@ var citySearch = $("#previousCities")
 function displayCities(doc) {
   var li = $("<li>");
   var cityName = $("<span>");
-  // var deleteCity = $("<div>");
 
   $(li).attr("data-id", doc.id);
   $(cityName).text(doc.data().city);
-  // $(deleteCity).text("x");
 
   $(li).append(cityName);
-  // $(li).append(deleteCity);
 
   $(citySearch).append(li);
-
-  // delete cities
-  deleteCity.addEventListner("click", (e) => {
-    id = e.target.parentElement.getAttribute("data-id");
-    db.collection("cities").doc(id).delete();
-  })
 }
 
-// database.collection("cities").onSnapshot(snapshot => {
-//   var changes = snapshot.docChanges();
-//   changes.forEach(change => {
-//     if (change.type == "added") {
-//       displayCities(change.doc);
-//     } else if (change.type == "removed") {
-//       var li = $(citySearch).data("[id=" + change.doc.id + ']');
-//       citySearch.remove(li);
-//     }
+//Getting Data
+// database.collection("cities").get().then(function(snapshot) {
+//   snapshot.docs.forEach(doc => {
+//     displayCities(doc);
 //   })
 // })
+database.collection("cities").onSnapshot(snapshot => {
+  var changes = snapshot.docChanges();
+  changes.forEach(change => {
+    if (change.type == "added") {
+      displayCities(change.doc);
+    } else if (change.type == "removed") {
+      var li = $(citySearch).data("[id=" + change.doc.id + ']');
+      citySearch.remove(li);
+    }
+  })
+})
