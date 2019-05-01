@@ -1,6 +1,11 @@
 body{
-    background: white;
+    /* background: url("https://nancieteresa.files.wordpress.com/2015/01/grunge-travel-background-239421341.jpg"); */
+    /* background: url("https://thumbs.dreamstime.com/z/swoosh-certificate-blue-modern-background-abstract-halftone-lines-create-smooth-border-vector-illustration-47723282.jpg"); */
     font-family: 'Quicksand','Fredoka One', 'Bevan', sans-serif;
+    background-position: absolute;
+    
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 h1{
     color: rgb(0, 0, 0);
@@ -41,19 +46,24 @@ h1{
 }
 
 #weather-here{
-    background: #ffffff;
     font-family: 'Bevan';
-    font-size: 40px;
+    font-size: 35px;
     color: #575b59;
-}
-#dump-outdoor-here{
-    background: #ffffff;
+    margin-top: 30px;
 }
 
+
 #dump-pic-here{
-    background-color: #ffffff;
+   
+    align-content: center;
+    justify-content: center;
+    
 }
 .i{
     color: rgb(44, 124, 167);
-    font-size: 60px;
+    font-size: 40px;
 }
+#Cweather{
+    
+}
+
