@@ -29,16 +29,17 @@ $.ajax({
 
    // Transfer content to HTML
 
-   $(".location").html("<h2>" + response.name + "</h2>"); 
-   $(".wind").text("Wind Speed: " + Math.floor(response.wind.speed)) ; 
-   $(".tmp-degree").text("Temperature (F) " + Math.floor(response.main.temp) + "º"); 
+   $(".location").html("<h2>" + response.name + "</h2>").prepend('<i class="fas i fa-globe-americas"></i>');
+   $("#CWeather").html(" Currently Weather").prepend('<i class="fas i fa-cloud-sun"></i>') 
+   $(".wind").text(" Wind Speed: " + Math.floor(response.wind.speed)).prepend('<i class="fas i fa-wind"></i>') ; 
+   $(".tmp-degree").text(" Temperature (F) " + Math.floor(response.main.temp) + "º").prepend('<i  class="fas i fa-temperature-high"></i>'); 
    $(".temperature-description").text( response.weather[0].description );
 
    // Log the data in the console as well
-   console.log("Wind Speed: " + response.wind.speed);
-   console.log("Humidity: " + response.main.humidity);
-   console.log("Temperature: " + response.main.temp);
-   console.log("Description" + response.weather[0].description);
+   console.log(" Wind Speed: " + response.wind.speed);
+   console.log(" Humidity: " + response.main.humidity);
+   console.log(" Temperature: " + response.main.temp);
+   console.log(" Description" + response.weather[0].description);
    $("#weather-here").show();
  });
 };
@@ -100,8 +101,8 @@ var addCard = function(city){
     var deleteCard = $(this).closest('.card');
     deleteCard.hide('slow', function(){ deleteCard.remove(); });
   });
-  
-}
+ 
+ }
 //--------------------------------------SAFETY WIDGET -------------------------------------->
 
 // function safetyWidget(citySafety){
@@ -119,7 +120,7 @@ var addCard = function(city){
 
 //--------------------------------------OUTDOORS WIDGET -------------------------------------->
 function outdoorWidget(cityOutdoors){
-$("a.teleport-widget-link").attr("href", "https://teleport.org/cities/" + cityOutdoors)
+  $("a.teleport-widget-link").attr("href", "https://teleport.org/cities/" + cityOutdoors)
 
 //widget url changes via input 
 $('iframe').attr("id", "widget")
@@ -146,12 +147,12 @@ function displayUnsplashImages(city) {
       showImage.attr("src", results[i].urls.regular);
       showImage.addClass("d-block");
       imgDiv.prepend(showImage);
-
+ 
       $(".carousel-inner").append(imgDiv);
     };
     $('.carousel-item').first().addClass('active');
   })
-}
+ }
 
 //----------------------------------------FIREBASE----------------------------------->
 
@@ -177,11 +178,6 @@ function displayCities(doc) {
   $(li).append(cityName);
 
   $(citySearch).append(li);
-
-  // deleteCity.addEventListner("click", (e) => {
-  //   id = e.target.parentElement.getAttribute("data-id");
-  //   database.collection("cities").doc(id).delete();
-  // })
 }
 
 //Getting Data
@@ -190,3 +186,14 @@ function displayCities(doc) {
 //     displayCities(doc);
 //   })
 // })
+database.collection("cities").onSnapshot(snapshot => {
+  var changes = snapshot.docChanges();
+  changes.forEach(change => {
+    if (change.type == "added") {
+      displayCities(change.doc);
+    } else if (change.type == "removed") {
+      var li = $(citySearch).data("[id=" + change.doc.id + ']');
+      citySearch.remove(li);
+    }
+  })
+})
