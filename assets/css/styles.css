@@ -39,3 +39,19 @@ h1{
     color: red;
     padding: 10px;
 }
+
+#weather-here{
+    background: #4cb4ec;
+}
+#dump-outdoor-here{
+    background: #66dfb0;
+}
+
+.carousel-size {
+    max-width: 60%;
+    margin: 10px auto;
+}
+
+.carousel {
+    height: 800px;
+}

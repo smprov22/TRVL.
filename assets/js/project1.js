@@ -52,7 +52,7 @@ $.ajax({
    var city = $("#destination").val().trim().split(" ").join("+");
   //  var citySafety = $("#destination").val().trim().split(" ").join("-");
    var cityOutdoors = $("#destination").val().trim().split(" ").join("-");
-   
+
    database.collection("cities").add({
      city: $("#destination").val().trim()
    });
@@ -65,40 +65,40 @@ $.ajax({
   
   $("#destination").val("");
 
+  // hide jumbotron on click
+  $("#bg").fadeOut("slow");
+
+  //----------------------------------------STORES ELEMENTS INSIDE CARD -------------------->
+  
+//   //unsplash photos
+//   $('.card-body').html($("#dump-pic-here"));
+
+//   //outdoor widget
+//   $('.card-body').append($("#dump-outdoor-here"));
+
+//   //weather
+//   $('.card-body').append($("#weather-here"));
+ 
 });
 
 
- //----------------------------------------STORES ELEMENTS INSIDE CARD -------------------->
-  
-  //unsplash photos
-  $('.card-body').html($("#dump-pic-here"));
-
-  //outdoor widget
-  $('.card-body').append($("#dump-outdoor-here"));
-
-  //weather
-  $('.card-body').append($("#weather-here"));
- 
-
-
-
-  //------------------------------------------------NEW CARD---------------------------------------->
+//------------------------------------------------NEW CARD---------------------------------------->
 
 var addCard = function(city){
 
-  var newCard =$('<div id="collapse"><div class="accordion" id="accordionExample">'
-  + '<div class="card"><div class="card-header" id="headingOne"><h2 class="mb-0">' +
-  '<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">'
-  + 'YOUR TRIP TO ' + city +'</button><button id="delete-button"class="btn" type="button">' + 'X' + '</button>' +
-  '</h2></div><div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample"><div class=" row card-body">')
+  // var newCard =$('<div id="collapse"><div class="accordion" id="accordionExample">'
+  // + '<div class="card"><div class="card-header" id="headingOne"><h2 class="mb-0">' +
+  // '<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">'
+  // + 'YOUR TRIP TO ' + city +'</button><button id="delete-button"class="btn" type="button">' + 'X' + '</button>' +
+  // '</h2></div><div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample"><div class=" row card-body">')
             
-  $('#collapse').prepend(newCard);
+  // $('#collapse').prepend(newCard);
 
   //-----------deletes card on click---------------->
   $('#delete-button').on('click', function(e){
     e.stopPropagation();  
-        var deleteCard = $(this).closest('.card');
-        deleteCard.hide('slow', function(){ deleteCard.remove(); });
+    var deleteCard = $(this).closest('.card');
+    deleteCard.hide('slow', function(){ deleteCard.remove(); });
   });
   
 }
@@ -119,7 +119,7 @@ var addCard = function(city){
 
 //--------------------------------------OUTDOORS WIDGET -------------------------------------->
 function outdoorWidget(cityOutdoors){
-$("a").attr("href", "https://teleport.org/cities/" + cityOutdoors)
+$("a.teleport-widget-link").attr("href", "https://teleport.org/cities/" + cityOutdoors)
 
 //widget url changes via input 
 $('iframe').attr("id", "widget")
@@ -137,18 +137,19 @@ function displayUnsplashImages(city) {
     method: "GET"
   }).then(function (response) {
     console.log(response);
-    $("#dump-pic-here").empty();
+    $(".carousel-inner").empty();
     var results = response.results;
     for (var i = 0; i < results.length; i++) {
       var imgDiv = $("<div>");
-      imgDiv.addClass("imgClass");
+      imgDiv.addClass("carousel-item");
       var showImage = $("<img>");
-      showImage.attr("src", results[i].urls.thumb);
-      showImage.addClass("pic");
+      showImage.attr("src", results[i].urls.regular);
+      showImage.addClass("d-block");
       imgDiv.prepend(showImage);
 
-      $("#dump-pic-here").prepend(imgDiv);
+      $(".carousel-inner").append(imgDiv);
     };
+    $('.carousel-item').first().addClass('active');
   })
 }
 
@@ -169,32 +170,23 @@ var citySearch = $("#previousCities")
 function displayCities(doc) {
   var li = $("<li>");
   var cityName = $("<span>");
-  // var deleteCity = $("<div>");
 
   $(li).attr("data-id", doc.id);
   $(cityName).text(doc.data().city);
-  // $(deleteCity).text("x");
 
   $(li).append(cityName);
-  // $(li).append(deleteCity);
 
   $(citySearch).append(li);
 
-  // delete cities
-  deleteCity.addEventListner("click", (e) => {
-    id = e.target.parentElement.getAttribute("data-id");
-    db.collection("cities").doc(id).delete();
-  })
+  // deleteCity.addEventListner("click", (e) => {
+  //   id = e.target.parentElement.getAttribute("data-id");
+  //   database.collection("cities").doc(id).delete();
+  // })
 }
 
-// database.collection("cities").onSnapshot(snapshot => {
-//   var changes = snapshot.docChanges();
-//   changes.forEach(change => {
-//     if (change.type == "added") {
-//       displayCities(change.doc);
-//     } else if (change.type == "removed") {
-//       var li = $(citySearch).data("[id=" + change.doc.id + ']');
-//       citySearch.remove(li);
-//     }
+//Getting Data
+// database.collection("cities").get().then(function(snapshot) {
+//   snapshot.docs.forEach(doc => {
+//     displayCities(doc);
 //   })
 // })
