@@ -35,11 +35,6 @@ $.ajax({
    $(".tmp-degree").text(" Temperature (F) " + Math.floor(response.main.temp) + "º").prepend('<i  class="fas i fa-temperature-high"></i>'); 
    $(".temperature-description").text( response.weather[0].description );
 
-   // Log the data in the console as well
-   console.log(" Wind Speed: " + response.wind.speed);
-   console.log(" Humidity: " + response.main.humidity);
-   console.log(" Temperature: " + response.main.temp);
-   console.log(" Description" + response.weather[0].description);
    $("#weather-here").show();
  });
 };
@@ -54,6 +49,12 @@ $.ajax({
   //  var citySafety = $("#destination").val().trim().split(" ").join("-");
    var cityOutdoors = $("#destination").val().trim().split(" ").join("-");
    var lower = cityOutdoors.toLowerCase();
+   var city2 = $("#destination").val().trim()
+
+   if (city === ""){
+    alert("Must enter text in the box"); //NEED TO CHANGE TO SOMETHING OTHER THAN AN ALERT!!
+    return false;
+  }
 
    database.collection("cities").add({
      city: $("#destination").val().trim()
@@ -62,48 +63,25 @@ $.ajax({
    weatherApi(city);
    displayUnsplashImages(city);
    outdoorWidget(lower); 
-   addCard(city);
+   displayCities(city2);
+  //  addCard(city);
   //safetyWidget(citySafety); (may add back at a later date)
   
   $("#destination").val("");
 
   // hide jumbotron on click
   $("#bg").fadeOut("slow");
-
-  //----------------------------------------STORES ELEMENTS INSIDE CARD -------------------->
-  
-//   //unsplash photos
-//   $('.card-body').html($("#dump-pic-here"));
-
-//   //outdoor widget
-//   $('.card-body').append($("#dump-outdoor-here"));
-
-//   //weather
-//   $('.card-body').append($("#weather-here"));
  
 });
 
-
-//------------------------------------------------NEW CARD---------------------------------------->
-
-var addCard = function(city){
-
-  // var newCard =$('<div id="collapse"><div class="accordion" id="accordionExample">'
-  // + '<div class="card"><div class="card-header" id="headingOne"><h2 class="mb-0">' +
-  // '<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">'
-  // + 'YOUR TRIP TO ' + city +'</button><button id="delete-button"class="btn" type="button">' + 'X' + '</button>' +
-  // '</h2></div><div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample"><div class=" row card-body">')
-            
-  // $('#collapse').prepend(newCard);
-
   //-----------deletes card on click---------------->
   $(document).on('click', '.delete-button', function(e){
-    e.stopPropagation();  
-    var deleteCard = $(this).closest('tr');
-    deleteCard.hide('slow', function(){ deleteCard.remove(); });
-  });
- 
- }
+    e.stopPropagation();
+    $(this).closest("tr").remove();
+    id = e.target.getAttribute("data-id");
+    database.collection("cities").doc(id).delete();
+    });
+
 //--------------------------------------SAFETY WIDGET -------------------------------------->
 
 // function safetyWidget(citySafety){
@@ -167,28 +145,15 @@ var config = {
 firebase.initializeApp(config);
 
 var database = firebase.firestore();
-var citySearch = $("#info")
 
 function displayCities(doc) {
+  console.log(doc);
   var newRow = $("<tr>").append(
-    $("<td>").text("You searched " + doc.data().city),
+    $("<td>").text("You searched " + (doc.data().city)),
     $("<button>").text("x").addClass("delete-button").attr("data-id", doc.id),
     );
-    $(citySearch).append(newRow)
+    $("#info").append(newRow)
   }
-
-    
-  
-  // var td = $("<tr>");
-  // var cityName = $("<span>");
-
-  // $(td).attr("data-id", doc.id);
-  // $(cityName).text(doc.data().city);
-
-  // $(li).append(cityName);
-
- 
-
 
 //Getting Data
 database.collection("cities").get().then(function(snapshot) {
