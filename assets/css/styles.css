@@ -41,14 +41,6 @@ h1{
 }
 
 #weather-here{
-<<<<<<< HEAD
-    background: #4cb4ec;
-}
-#dump-outdoor-here{
-    background: #66dfb0;
-}
-
-=======
     background: #ffffff;
     font-family: 'Bevan';
     font-size: 40px;
@@ -65,4 +57,3 @@ h1{
     color: rgb(44, 124, 167);
     font-size: 60px;
 }
->>>>>>> a0c0f87162e49a315efdf125c8dc756adcb6dd6f
