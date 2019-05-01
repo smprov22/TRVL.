@@ -47,6 +47,7 @@ h1{
     background: #66dfb0;
 }
 
+<<<<<<< HEAD
 .carousel-size {
     max-width: 60%;
     margin: 10px auto;
@@ -54,4 +55,8 @@ h1{
 
 .carousel {
     height: 800px;
+=======
+#dump-pic-here{
+    background-color: rgb(236, 145, 145);
+>>>>>>> master
 }

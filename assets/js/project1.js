@@ -177,11 +177,14 @@ function displayCities(doc) {
   $(li).append(cityName);
 
   $(citySearch).append(li);
+<<<<<<< HEAD
 
   // deleteCity.addEventListner("click", (e) => {
   //   id = e.target.parentElement.getAttribute("data-id");
   //   database.collection("cities").doc(id).delete();
   // })
+=======
+>>>>>>> master
 }
 
 //Getting Data
@@ -190,3 +193,17 @@ function displayCities(doc) {
 //     displayCities(doc);
 //   })
 // })
+<<<<<<< HEAD
+=======
+database.collection("cities").onSnapshot(snapshot => {
+  var changes = snapshot.docChanges();
+  changes.forEach(change => {
+    if (change.type == "added") {
+      displayCities(change.doc);
+    } else if (change.type == "removed") {
+      var li = $(citySearch).data("[id=" + change.doc.id + ']');
+      citySearch.remove(li);
+    }
+  })
+})
+>>>>>>> master
