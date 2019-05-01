@@ -1,6 +1,6 @@
 body{
     background: white;
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Quicksand','Fredoka One', 'Bevan', sans-serif;
 }
 h1{
     color: rgb(0, 0, 0);
@@ -41,12 +41,19 @@ h1{
 }
 
 #weather-here{
-    background: #4cb4ec;
+    background: #ffffff;
+    font-family: 'Bevan';
+    font-size: 40px;
+    color: #575b59;
 }
 #dump-outdoor-here{
-    background: #66dfb0;
+    background: #ffffff;
 }
 
 #dump-pic-here{
-    background-color: rgb(236, 145, 145);
+    background-color: #ffffff;
+}
+.i{
+    color: rgb(44, 124, 167);
+    font-size: 60px;
 }
