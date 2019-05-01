@@ -53,6 +53,7 @@ $.ajax({
    var city = $("#destination").val().trim().split(" ").join("+");
   //  var citySafety = $("#destination").val().trim().split(" ").join("-");
    var cityOutdoors = $("#destination").val().trim().split(" ").join("-");
+   var lower = cityOutdoors.toLowerCase();
 
    database.collection("cities").add({
      city: $("#destination").val().trim()
@@ -60,7 +61,7 @@ $.ajax({
 
    weatherApi(city);
    displayUnsplashImages(city);
-   outdoorWidget(cityOutdoors); 
+   outdoorWidget(lower); 
    addCard(city);
   //safetyWidget(citySafety); (may add back at a later date)
   
@@ -96,9 +97,9 @@ var addCard = function(city){
   // $('#collapse').prepend(newCard);
 
   //-----------deletes card on click---------------->
-  $('#delete-button').on('click', function(e){
+  $(document).on('click', '.delete-button', function(e){
     e.stopPropagation();  
-    var deleteCard = $(this).closest('.card');
+    var deleteCard = $(this).closest('tr');
     deleteCard.hide('slow', function(){ deleteCard.remove(); });
   });
  
@@ -166,34 +167,32 @@ var config = {
 firebase.initializeApp(config);
 
 var database = firebase.firestore();
-var citySearch = $("#previousCities")
+var citySearch = $("#info")
 
 function displayCities(doc) {
-  var li = $("<li>");
-  var cityName = $("<span>");
+  var newRow = $("<tr>").append(
+    $("<td>").text("You searched " + doc.data().city),
+    $("<button>").text("x").addClass("delete-button").attr("data-id", doc.id),
+    );
+    $(citySearch).append(newRow)
+  }
 
-  $(li).attr("data-id", doc.id);
-  $(cityName).text(doc.data().city);
+    
+  
+  // var td = $("<tr>");
+  // var cityName = $("<span>");
 
-  $(li).append(cityName);
+  // $(td).attr("data-id", doc.id);
+  // $(cityName).text(doc.data().city);
 
-  $(citySearch).append(li);
-}
+  // $(li).append(cityName);
+
+ 
+
 
 //Getting Data
-// database.collection("cities").get().then(function(snapshot) {
-//   snapshot.docs.forEach(doc => {
-//     displayCities(doc);
-//   })
-// })
-database.collection("cities").onSnapshot(snapshot => {
-  var changes = snapshot.docChanges();
-  changes.forEach(change => {
-    if (change.type == "added") {
-      displayCities(change.doc);
-    } else if (change.type == "removed") {
-      var li = $(citySearch).data("[id=" + change.doc.id + ']');
-      citySearch.remove(li);
-    }
+database.collection("cities").get().then(function(snapshot) {
+  snapshot.docs.forEach(doc => {
+    displayCities(doc);
   })
 })
