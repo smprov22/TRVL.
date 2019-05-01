@@ -39,3 +39,14 @@ h1{
     color: red;
     padding: 10px;
 }
+
+#weather-here{
+    background: #4cb4ec;
+}
+#dump-outdoor-here{
+    background: #66dfb0;
+}
+
+#dump-pic-here{
+    background-color: rgb(236, 145, 145);
+}
