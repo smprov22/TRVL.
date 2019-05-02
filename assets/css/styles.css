@@ -22,6 +22,19 @@ h1{
     left:0;   
 }
 
+#destination{
+    overflow: visible;
+}
+#info{
+    display: block;
+    margin: 0 auto;
+   
+}
+
+i{
+    font-family: 'Quicksand','Fredoka One', 'Bevan', sans-serif;
+}
+
 #allLetters{
     margin: 0 auto;
     width: 100%;
@@ -43,7 +56,32 @@ h1{
     z-index: 1;
 } 
 
+#prevSearch{
+    font-size: 22px;
+    text-align: left;
+    color: darkgray;
+}
 
+tr{
+    float: left;
+   
+}
+
+#tripName{
+    text-align: center;
+    margin: 80px 0 0 0;
+}
+
+.tripRow{
+  
+    display: block;
+   
+}
+
+#dotOnLoad{
+    margin: 0 auto;
+    width: 100%;
+}
 
 #btn-submit{
     text-align: center;
@@ -56,7 +94,9 @@ h1{
     font-size: 20px
 }
 
-
+.card-body{
+ 
+}
 .form-control{
     border-top-color: white;
     border-left-color: white;
@@ -65,14 +105,27 @@ h1{
     font-size: 20px;
 }
 
-#delete-button{
+.delete-button{
     margin: auto;
     color: rgba(0,0,0,.03);
-    color: red;
+    color: darkgray;
+    background-color: white;
     padding: 10px;
+    float: right;
+    display: inline;
 }
+
+td{
+    color: darkgray;
+}
+
+.table thead th{
+border-bottom: 2px solid white;
+}
+
+
 #prev{
-    background-color: rgb(41, 164, 209);
+    /* background-color: rgb(41, 164, 209); */
 }
 
 #weather-here{
@@ -80,24 +133,23 @@ h1{
     font-size: 35px;
     color: #575b59;
     margin-top: 30px;
-    background-color: rgb(25, 155, 77);
+    /* background-color: rgb(25, 155, 77); */
 }
 
 
 #dump-pic-here{
     align-content: center;
     justify-content: center;
-    background-color: rgb(187, 51, 51);
+    /* background-color: rgb(187, 51, 51); */
     
 }
 #dump-outdoor-here{
-    background-color: rgb(110, 54, 184);
+    /* background-color: rgb(110, 54, 184); */
 }
 .i{
-    color: rgb(44, 124, 167);
+    /* color: rgb(44, 124, 167); */
     font-size: 40px;
 }
-
 
 
 @media only screen and ( max-width: 760px){
