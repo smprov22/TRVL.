@@ -80,6 +80,7 @@ tr{
 
 #dotOnLoad{
     margin: 0 auto;
+    width: 100%;
 }
 
 #btn-submit{
@@ -94,7 +95,7 @@ tr{
 }
 
 .card-body{
-    margin-left: 50px;
+ 
 }
 .form-control{
     border-top-color: white;
@@ -122,32 +123,34 @@ td{
 border-bottom: 2px solid white;
 }
 
+
+#prev{
+    /* background-color: rgb(41, 164, 209); */
+}
+
 #weather-here{
     font-family: 'Bevan';
     font-size: 35px;
     color: #575b59;
     margin-top: 30px;
+    /* background-color: rgb(25, 155, 77); */
 }
 
 
 #dump-pic-here{
-   
     align-content: center;
     justify-content: center;
+    /* background-color: rgb(187, 51, 51); */
     
 }
+#dump-outdoor-here{
+    /* background-color: rgb(110, 54, 184); */
+}
 .i{
-    color: rgb(44, 124, 167);
+    /* color: rgb(44, 124, 167); */
     font-size: 40px;
 }
 
-.footer___28juC {
-
-    color:white !important; 
-}
-.footer___28juC a {
-    color:white !important;
-}
 
 @media only screen and ( max-width: 760px){
 

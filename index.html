@@ -37,11 +37,10 @@
         <img src="assets/images/period.png" class="letter animated bounceIn delay-5s">
       
     </div>
-    
       </div>
     </header>
     <div class="container">
-        <div class="row">
+      <div class="row">
             <div class="col-4"></div>
             <div class="col-4">
                 <form>
@@ -52,35 +51,38 @@
                     <button id="btn-submit" type="submit" href="#dump-pic-here" >Let's go!</button>
                 </form>
             </div>
-        </div>
       </div>
      
       <div class="row tripRow">
       <h1 id="tripName"></h1>    
     </div>
     <div class="row">
-      <img src="assets/images/dots.png" id="dotOnLoad" class="animated slideInLeft slow">
-    </div>
+        <img src="assets/images/dots.png" id="dotOnLoad" class="animated slideInLeft slow">
+      </div>
     <!----------------Previous Searches-------------->
-    <div class="row ">
-       
-        <div class="card-body">
-          <table class="table">
-            <thead>
-              <tr>
-                <th id="prevSearch" scope="row"></th>
-                <th scope="row"></th>
-              </tr>
-            </thead>
-            <tbody id="info">
       
-            </tbody>
-          </table>
-        </div>
-      <!-------------------CAROUSEL---------------------->
-      
-        <div class="col-12 d-flex flex-wrap mt-2" id="dump-pic-here">
+        <!-- <div class="col-12 d-flex flex-wrap mt-2" id="dump-pic-here"> -->
            
+      <div class="row" id="prev">
+          <div class="col">
+              <div class="card-body">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                          <th id="prevSearch" scope="row"></th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody id="info">
+              
+                    </tbody>
+                  </table>
+                </div>
+          </div>
+      </div>
+      <div class="row">
+      <!-------------------CAROUSEL---------------------->
+        <div class="col d-flex flex-wrap mt-2" id="dump-pic-here">
           <!--Carousel starter code, need to link up src to jquery-->
           <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
             <div id="" class="carousel-inner carousel-size">
@@ -96,8 +98,8 @@
             </a>
           </div>
         </div>
-        <!-- Outdoors Widget -->
-        
+      </div>
+      <div class="row">
         <div id="dump-outdoor-here" class="col-6">
           <a class="teleport-widget-link" href="https://teleport.org/cities/aarhus/"></a>
           <script async class="teleport-widget-script"
@@ -107,7 +109,7 @@
         
         
         <!-- weather hereeee -->
-        <div id="weather-here" class=" col-6 d-flex align-items-center   flex-column">
+        <div id="weather-here" class=" col-6 d-flex align-items-center  flex-column">
           <h3 id="CWeather"></h3>
           <div class="location m-4">
           </div>
@@ -119,6 +121,8 @@
           </div>
         </div>
     </div>
+  </div>
+
 
 <!-- Footer -->
 <footer class="page-footer font-small stylish-color-dark pt-4 ">
@@ -150,7 +154,6 @@
     <!-- Copyright -->
 
 </footer>
-<!-- Footer -->
 
 <!--Firebase script link-->
 <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
