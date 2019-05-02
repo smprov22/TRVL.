@@ -55,30 +55,36 @@
         </div>
       </div>
      
-                
-    <!----------------Previous Searches-------------->
+      <div class="row tripRow">
+      <h1 id="tripName"></h1>    
+    </div>
     <div class="row">
-    
-      <div class="card-body">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Previous Searches</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody id="info">
-    
-          </tbody>
-        </table>
-      </div>
+      <img src="assets/images/dots.png" id="dotOnLoad" class="animated slideInLeft slow">
+    </div>
+    <!----------------Previous Searches-------------->
+    <div class="row ">
+       
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th id="prevSearch" scope="row"></th>
+                <th scope="row"></th>
+              </tr>
+            </thead>
+            <tbody id="info">
+      
+            </tbody>
+          </table>
+        </div>
       <!-------------------CAROUSEL---------------------->
-
+      
         <div class="col-12 d-flex flex-wrap mt-2" id="dump-pic-here">
+           
           <!--Carousel starter code, need to link up src to jquery-->
           <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
             <div id="" class="carousel-inner carousel-size">
- 
+              
             </div>
             <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -91,6 +97,7 @@
           </div>
         </div>
         <!-- Outdoors Widget -->
+        
         <div id="dump-outdoor-here" class="col-6">
           <a class="teleport-widget-link" href="https://teleport.org/cities/aarhus/"></a>
           <script async class="teleport-widget-script"
