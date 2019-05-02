@@ -68,7 +68,7 @@ $.ajax({
   $("#destination").val("");
 
   // hide jumbotron on click
-  $("#bg").fadeOut("slow");
+  $("header").fadeOut("slow");
  
 });
 

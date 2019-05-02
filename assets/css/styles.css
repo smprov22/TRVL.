@@ -10,14 +10,29 @@ body{
 h1{
     color: rgb(0, 0, 0);
 }
+
 #bg{ 
     max-width: 500px;
     padding-bottom: 200px;
     padding-top: 50px;
-    margin: 0 auto;
+    margin: 0 auto;  
+    z-index: 1;
+    position: relative;
+    top:0;
+    left:0;   
+}
 
-   
-   
+#allLetters{
+    margin: 0 auto;
+    width: 100%;
+    position: absolute;
+    top: 200px;
+    z-index: 100;
+}
+
+.T, .R, .V, .L {
+    margin:0 auto;
+    padding: -50px;
 }
 
 .globe{
@@ -25,8 +40,11 @@ h1{
     width: 100%;
     background-size: auto;
     height: auto;
+    z-index: 1;
+} 
 
-}
+
+
 #btn-submit{
     text-align: center;
     display: block;
@@ -72,8 +90,37 @@ h1{
     color: rgb(44, 124, 167);
     font-size: 40px;
 }
-#Cweather{
-    
+
+footer{
+    width: 100%;
+}
+
+@media only screen and ( max-width: 760px){
+
+.T img{
+
+height: 150px;
+width:100px;
+}
+.R img{
+
+    height: 150px;
+    width:100px;
+    }
+.V img{
+
+height: 150px;
+width:100px;
+}
+.L img{
+
+height: 150px;
+width:100px;
+}
+.dot img{
+
+height: 150px;
+width:50px;
 }
 
 /* th, td {
