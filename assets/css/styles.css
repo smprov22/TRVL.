@@ -91,6 +91,10 @@ h1{
     font-size: 40px;
 }
 
+footer{
+    width: 100%;
+}
+
 @media only screen and ( max-width: 760px){
 
 .T img{
@@ -119,10 +123,6 @@ height: 150px;
 width:50px;
 }
 
-<<<<<<< HEAD
-}
-=======
 /* th, td {
     width: 20%;
 } */
->>>>>>> e8f534d4a75e657a349467ca2213ebf9c2f81d96
