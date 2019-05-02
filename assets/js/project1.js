@@ -2,8 +2,9 @@
 $("#dump-safety-here").hide();
 $("#dump-outdoor-here").hide();
 $("#weather-here").hide();
-
-
+$(".tripRow").hide();
+$("#info").hide();
+$("#dotOnLoad").hide();
 
 //--------------------------------------WEATHER API ---------------------------------------->
 function weatherApi(city){
@@ -69,7 +70,15 @@ $.ajax({
 
   // hide jumbotron on click
   $("header").fadeOut("slow");
+
+  var cityTitle = city.toUpperCase();
+  $('#tripName').html("YOUR TRIP TO " + cityTitle)
+  
+  $("#prevSearch").html("Previous Searches");
  
+  $(".tripRow").show();
+  $("#info").show();
+  $("#dotOnLoad").show()
 });
 
   //-----------deletes card on click---------------->
@@ -145,13 +154,36 @@ firebase.initializeApp(config);
 var database = firebase.firestore();
 
 function displayCities(doc) {
+
   var newRow = $("<tr>").append(
     $("<td>").text("You searched " + (doc.data().city)),
     $("<button>").text("x").addClass("delete-button").attr("data-id", doc.id),
     );
     $("#info").prepend(newRow)
   }
+ 
 
+  //-----------------KELLI'S CODE IN PROGRESS----------->
+//   var tableRow= [];
+//   console.log(tableRow);
+//   var newRow = $("<tr>").append(
+//     $("<td>").text((doc.data().city)),
+//     $("<button>").text("x").addClass("delete-button").attr("data-id", doc.id),
+//     );
+    
+// //-----------PRINT ONLY 5 TRIPS------------->
+// for(let i=0; i <5; i++){
+//     if(tableRow.length < 5){
+//       $("#info").prepend(newRow)
+//       tableRow.push(newRow)
+//       console.log("works")
+//     } else {
+//       alert("over 5")
+//       tableRow[0].empty();
+//     }
+
+//   }
+// }
   database.collection("cities").onSnapshot(snapshot => {
     var changes = snapshot.docChanges();
     changes.forEach(change => {
