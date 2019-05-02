@@ -145,11 +145,12 @@ firebase.initializeApp(config);
 var database = firebase.firestore();
 
 function displayCities(doc) {
-  var newRow = $("<tr>").append(
+  var newRow = $("<tr>").addClass("compare-city").attr("data-id", doc.id).append(
     $("<td>").text("You searched " + (doc.data().city)),
     $("<button>").text("x").addClass("delete-button").attr("data-id", doc.id),
     );
     $("#info").prepend(newRow)
+    console.log(doc.data().city);
   }
 
   database.collection("cities").onSnapshot(snapshot => {
@@ -160,3 +161,9 @@ function displayCities(doc) {
       }
     })
   })
+
+//---------------------PREVIOUS SEARCH CLICK-------------------//
+$(document).on('click', '.compare-city', function(doc){
+  var cityClick = (doc.data().city);
+  console.log(cityClick);
+})
