@@ -19,6 +19,9 @@ h1 {
     top:0;
     left:0;   
 }
+#dotOnLoad {
+    width: 97%;
+}
 
 #destination {
     overflow: visible;
