@@ -81,6 +81,8 @@ h1{
     color: #575b59;
     margin-top: 30px;
     background-color: rgb(25, 155, 77);
+   
+    justify-content: center;
 }
 
 
@@ -92,6 +94,8 @@ h1{
 }
 #dump-outdoor-here{
     background-color: rgb(110, 54, 184);
+    align-content: center;
+    justify-content: center;
 }
 .i{
     color: rgb(44, 124, 167);
