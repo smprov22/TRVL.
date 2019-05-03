@@ -92,26 +92,8 @@ tr {
     border-top-color: white;
     border-left-color: white;
     border-right-color: white;
-<<<<<<< HEAD
-    text-align: center;
-    font-size: 20px;
-}
-
-.delete-button{
-    margin: auto;
-    color: rgba(0,0,0,.03);
-    color: darkgray;
-    background-color: white;
-    padding: 10px;
-    
-}
-
-td{
-    color: darkgray;
-=======
     font-size: 18px;
     width: 300px
->>>>>>> 454cc0d7e8dd0d80c5ccd9714064e4e60768c6bc
 }
 
 .table thead th {
@@ -123,6 +105,15 @@ td{
     color: #575b59;
 }
 
+
+.btn-light{
+    background-color: white !important;
+}
+
+.p-1{
+    padding: .5rem 1.6rem !important;
+}
+
 #dump-pic-here {
     align-content: center;
     justify-content: center; 
@@ -132,7 +123,6 @@ td{
     /* color: rgb(44, 124, 167); */
     font-size: 20px;
 }
-
 
 
 @media only screen and ( max-width: 760px) {
@@ -160,5 +150,11 @@ td{
 .dot img {
     height: 150px;
     width:50px;
+}
+
+#dotOnLoad{
+    height: 40px;
+    width:500px;
+
 }
 }
