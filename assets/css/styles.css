@@ -22,19 +22,6 @@ h1{
     left:0;   
 }
 
-#destination{
-    overflow: visible;
-}
-#info{
-    display: block;
-    margin: 0 auto;
-   
-}
-
-i{
-    font-family: 'Quicksand','Fredoka One', 'Bevan', sans-serif;
-}
-
 #allLetters{
     margin: 0 auto;
     width: 100%;
@@ -56,32 +43,7 @@ i{
     z-index: 1;
 } 
 
-#prevSearch{
-    font-size: 22px;
-    text-align: left;
-    color: darkgray;
-}
 
-tr{
-    float: left;
-   
-}
-
-#tripName{
-    text-align: center;
-    margin: 80px 0 0 0;
-}
-
-.tripRow{
-  
-    display: block;
-   
-}
-
-#dotOnLoad{
-    margin: 0 auto;
-    width: 100%;
-}
 
 #btn-submit{
     text-align: center;
@@ -94,9 +56,7 @@ tr{
     font-size: 20px
 }
 
-.card-body{
- 
-}
+
 .form-control{
     border-top-color: white;
     border-left-color: white;
@@ -105,25 +65,12 @@ tr{
     font-size: 20px;
 }
 
-.delete-button{
+#delete-button{
     margin: auto;
     color: rgba(0,0,0,.03);
-    color: darkgray;
-    background-color: white;
+    color: red;
     padding: 10px;
-    float: right;
-    display: inline;
 }
-
-td{
-    color: darkgray;
-}
-
-.table thead th{
-border-bottom: 2px solid white;
-}
-
-
 #prev{
     /* background-color: rgb(41, 164, 209); */
 }
@@ -147,9 +94,10 @@ border-bottom: 2px solid white;
     /* background-color: rgb(110, 54, 184); */
 }
 .i{
-    /* color: rgb(44, 124, 167); */
+    color: rgb(44, 124, 167);
     font-size: 40px;
 }
+
 
 
 @media only screen and ( max-width: 760px){
@@ -179,4 +127,7 @@ width:100px;
 height: 150px;
 width:50px;
 }
-}
+
+/* th, td {
+    width: 20%;
+} */
