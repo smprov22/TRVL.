@@ -31,7 +31,7 @@ $.ajax({
    // Transfer content to HTML
 
    $(".location").html("<h2>" + response.name + "</h2>").prepend('<i class="fas i fa-globe-americas"></i>');
-   $("#CWeather").html(" Currently Weather").prepend('<i class="fas i fa-cloud-sun"></i>') 
+   $("#CWeather").html(" Current Weather").prepend('<i class="fas i fa-cloud-sun"></i>') 
    $(".wind").text(" Wind Speed: " + Math.floor(response.wind.speed)).prepend('<i class="fas i fa-wind"></i>') ; 
    $(".tmp-degree").text(" Temperature (F) " + Math.floor(response.main.temp) + "º").prepend('<i  class="fas i fa-temperature-high"></i>'); 
    $(".temperature-description").text( response.weather[0].description );
@@ -50,14 +50,21 @@ $.ajax({
   //  var citySafety = $("#destination").val().trim().split(" ").join("-");
    var cityOutdoors = $("#destination").val().trim().split(" ").join("-");
    var lower = cityOutdoors.toLowerCase();
+   var citySolo = $("#destination").val().trim();
 
    if (city === ""){
     alert("Must enter text in the box"); //NEED TO CHANGE TO SOMETHING OTHER THAN AN ALERT!!
     return false;
   }
 
+<<<<<<< HEAD
      database.collection("cities").add({
      city: $("#destination").val().trim()
+=======
+   database.collection("cities").add({
+     city: $("#destination").val().trim(),
+     date: new Date()
+>>>>>>> f9883c6e21f0b094dcf2d0e67c313d58422237ae
    });
    
   
@@ -73,7 +80,7 @@ $.ajax({
   // hide jumbotron on click
   $("header").fadeOut("slow");
 
-  var cityTitle = city.toUpperCase();
+  var cityTitle = citySolo.toUpperCase();
   $('#tripName').html("YOUR TRIP TO " + cityTitle)
   
   $("#prevSearch").html("Previous Searches");
@@ -157,14 +164,15 @@ var database = firebase.firestore();
 
 
 function displayCities(doc) {
-
-  var newRow = $("<tr>").append(
+  var newRow = $("<tr>").addClass("compare-city").attr("data-id", doc.id).append(
     $("<td>").text("You searched " + (doc.data().city)),
     $("<button>").text("x").addClass("delete-button").attr("data-id", doc.id),
     );
     $("#info").prepend(newRow)
+    // console.log(doc.data().city);
   }
 
+<<<<<<< HEAD
   
 
 //create a timestamp?
@@ -200,6 +208,15 @@ database.collection("cities").doc("1").set({
 //     $("<td>").text((doc.data().city)),
 //     $("<button>").text("x").addClass("delete-button").attr("data-id", doc.id),
 //   );
+=======
+  //-----------------KELLI'S CODE IN PROGRESS----------->
+  // var tableRow= [];
+  // console.log(tableRow);
+  // var newRow = $("<tr>").append(
+  //   $("<td>").text((doc.data().city)),
+  //   $("<button>").text("x").addClass("delete-button").attr("data-id", doc.id),
+  //   );
+>>>>>>> f9883c6e21f0b094dcf2d0e67c313d58422237ae
     
 // //-----------PRINT ONLY 5 TRIPS------------->
 // for(let i=0; i <5; i++){
@@ -212,4 +229,38 @@ database.collection("cities").doc("1").set({
 //     }
 
 //   }
+<<<<<<< HEAD
 // }
+=======
+// }
+  database.collection("cities").orderBy("date", "desc").onSnapshot(snapshot => {
+    var changes = snapshot.docChanges();
+    changes.forEach(change => {
+      if (change.type == "added") {
+        displayCities(change.doc);
+      }
+    })
+  })
+
+//---------------------PREVIOUS SEARCH CLICK-------------------//
+$(document).on('click', '.compare-city', function(doc){
+  var cityClick = $(this).attr("data-id");
+  console.log(cityClick);
+  database.collection("cities").doc(cityClick).get().then(function(doc){
+    if (doc.exists) {
+      var reSearch = doc.data().city;
+      var outdoors = reSearch.split(" ").join("-");
+      var picWeather = reSearch.split(" ").join("+");
+      var outdoorsLower = outdoors.toLowerCase();
+
+      weatherApi(picWeather);
+      displayUnsplashImages(picWeather);
+      outdoorWidget(outdoorsLower);
+
+      var cityTitle = reSearch.toUpperCase();
+  $('#tripName').html("YOUR TRIP TO " + cityTitle)
+    }
+   })
+  
+  })
+>>>>>>> f9883c6e21f0b094dcf2d0e67c313d58422237ae
