@@ -23,10 +23,10 @@ $.ajax({
  .then(function(response) {
 
    // Log the queryURL
-   console.log(queryURL);
+  //  console.log(queryURL);
 
    // Log the resulting object
-   console.log(response);
+  //  console.log(response);
 
    // Transfer content to HTML
 
@@ -56,14 +56,16 @@ $.ajax({
     return false;
   }
 
-   database.collection("cities").add({
+     database.collection("cities").add({
      city: $("#destination").val().trim()
    });
+   
+  
 
    weatherApi(city);
    displayUnsplashImages(city);
    outdoorWidget(lower); 
-  //  addCard(city);
+ 
   //safetyWidget(citySafety); (may add back at a later date)
   
   $("#destination").val("");
@@ -153,6 +155,7 @@ firebase.initializeApp(config);
 
 var database = firebase.firestore();
 
+
 function displayCities(doc) {
 
   var newRow = $("<tr>").append(
@@ -161,29 +164,20 @@ function displayCities(doc) {
     );
     $("#info").prepend(newRow)
   }
- 
 
-  //-----------------KELLI'S CODE IN PROGRESS----------->
-//   var tableRow= [];
-//   console.log(tableRow);
-//   var newRow = $("<tr>").append(
-//     $("<td>").text((doc.data().city)),
-//     $("<button>").text("x").addClass("delete-button").attr("data-id", doc.id),
-//     );
-    
-// //-----------PRINT ONLY 5 TRIPS------------->
-// for(let i=0; i <5; i++){
-//     if(tableRow.length < 5){
-//       $("#info").prepend(newRow)
-//       tableRow.push(newRow)
-//       console.log("works")
-//     } else {
-//       alert("over 5")
-//       tableRow[0].empty();
-//     }
+  
 
-//   }
-// }
+//create a timestamp?
+
+//settiing the id to 1
+database.collection("cities").doc("1").set({
+  numbber: "1"
+})
+
+//sort in decending order
+// var limitDatabase = database.orderBy("cities", "desc").limit(5);
+
+
   database.collection("cities").onSnapshot(snapshot => {
     var changes = snapshot.docChanges();
     changes.forEach(change => {
@@ -192,3 +186,30 @@ function displayCities(doc) {
       }
     })
   })
+
+
+
+
+
+ //-----------------KELLI'S CODE IN PROGRESS----------->
+//   function displayCities(doc) {
+  
+//   var tableRow= [];
+//   console.log(tableRow);
+//   var newRow = $("<tr>").append(
+//     $("<td>").text((doc.data().city)),
+//     $("<button>").text("x").addClass("delete-button").attr("data-id", doc.id),
+//   );
+    
+// //-----------PRINT ONLY 5 TRIPS------------->
+// for(let i=0; i <5; i++){
+//     if(tableRow.length < 5){
+//       $("#info").prepend(newRow)
+//       tableRow.push(newRow)
+//       console.log("works")
+//     } else {
+//       tableRow[0].empty();
+//     }
+
+//   }
+// }
