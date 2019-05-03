@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no,
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no,
 	 initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/css/mdb.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="./assets/css/styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700|Bevan|Fredoka+One" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.4.0.js" integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
-    <title>TRVL </title>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/css/mdb.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700|Bevan|Fredoka+One" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.4.0.js" integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
+  <title>TRVL </title>
 </head>
+
 <body>
   <header>
     <div id="bg">
-        <img src="assets/images/globe.png" class="globe animated flip slow">
-      </div>
+      <img src="assets/images/globe.png" class="globe animated flip slow">
+    </div>
     <div class="row" id="allLetters">
       <div class="col-2.4 T">
         <img src="assets/images/T.png" class="letter animated bounceInDown delay-1s">
@@ -36,95 +40,91 @@
       </div>
       <div class="col-2.4 dot">
         <img src="assets/images/period.png" class="letter animated bounceIn delay-3s">
-      
+
+      </div>
     </div>
+  </header>
+  <div class="container">
+    <div class="row">
+      <div class="col d-flex justify-content-center">
+        <form>
+          <div class="form-field form-group">
+            <input type="text" class="form-control text-center" id="destination" required
+              placeholder="What city would you like to see?">
+            <large id="emailHelp" class="form-text text-muted"></large>
+          </div>
+          <button class="btn aqua-gradient" id="btn-submit" type="submit" href="#dump-pic-here">Let's go!</button>
+          <p id=></p>
+        </form>
       </div>
-    </header>
-    <div class="container">
-      <div class="row">
-            <div class="col  d-flex justify-content-center">
-                <form>
-                    <div class="form-group  ">
-                        <input type="text" class="form-control text-center" id="destination"  placeholder="What city would you like to see?">
-                        <large id="emailHelp" class="form-text text-muted"></large>
-                    </div> 
-                    <button class="btn aqua-gradient" id="btn-submit" type="submit" href="#dump-pic-here" >Let's go!</button>
-                </form>
-            </div>
-      </div>
-     
-      <div class="row tripRow">
-      <h1 id="tripName"></h1>    
+    </div>
+
+    <div class="row tripRow">
+      <h1 id="tripName"></h1>
     </div>
     <div class="row">
-        <img src="assets/images/dots.png" id="dotOnLoad" class="animated slideInLeft slow">
-      </div>
-    <!----------------Previous Searches-------------->
+      <img src="assets/images/dots.png" id="dotOnLoad" class="animated slideInLeft slow">
+    </div>
     
-           
-      <div class="row" id="prev">
-          <div class="col-sm-12 col-md-8    d-flex align-items-center justify-content-center">
-              <div class="card-body">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                          <th id="prevSearch" scope="row"></th>
-                        <th scope="col"></th>
-                      </tr>
-                    </thead>
-                    <tbody id="info">
-              
-                    </tbody>
-                  </table>
-                </div>
-          </div>
-           <!-- weather hereeee -->
-        <div id="weather-here" class="col-sm-12  col-md-4  d-flex align-items-center justify-content-center  flex-column">
-          <div class="temperature ">
-            <h3 class="tmp-degree m-2"> </h3>
-            <div class="temperature-description m-2 "></div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-      <!-------------------CAROUSEL---------------------->
-        <div class="col d-flex flex-wrap mt-2" id="dump-pic-here">
-          <!--Carousel starter code, need to link up src to jquery-->
-          <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-            <div id="" class="carousel-inner carousel-size">
-              
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
+    <!----------------Previous Searches-------------->
+    <div class="row" id="prev">
+      <div class="col-sm-12 col-md-8 d-flex align-items-center justify-content-center">
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th id="prevSearch" scope="row"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody id="info">
+
+            </tbody>
+          </table>
         </div>
       </div>
 
-                    <!-- -------------outdoor------------------ -->
-
-      <div class="row">
-        <div id="dump-outdoor-here" class="col">
-          <a class="teleport-widget-link" href="https://teleport.org/cities/aarhus/"></a>
-          <script async class="teleport-widget-script"
-            data-url="https://teleport.org/cities/aarhus/widget/outdoors/?currency=USD&citySwitcher=false" data-max-width="1600"
-            data-height="600" src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
+      <!-- weather hereeee -->
+      <div id="weather-here" class="col-sm-12 col-md-4 d-flex align-items-center justify-content-center flex-column">
+        <div class="temperature">
+          <h3 class="tmp-degree m-2"> </h3>
+          <div class="temperature-description m-2"></div>
         </div>
-        
-        
-       
+      </div>
+    </div>
+
+    <!-------------------CAROUSEL---------------------->
+    <div class="row">
+      <div class="col d-flex flex-wrap mt-2" id="dump-pic-here">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+          <div class="carousel-inner carousel-size">
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!---------------Outdoor-------------------->
+    <div class="row">
+      <div id="dump-outdoor-here" class="col">
+        <a class="teleport-widget-link" href="https://teleport.org/cities/aarhus/"></a>
+        <script async class="teleport-widget-script"
+          data-url="https://teleport.org/cities/aarhus/widget/outdoors/?currency=USD&citySwitcher=false"
+          data-max-width="1600" data-height="600"
+          src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
+      </div>
     </div>
   </div>
 
-
-<!-- Footer -->
-<footer class="page-footer font-small stylish-color-dark pt-4 ">
-
+  <!-- Footer -->
+  <footer class="page-footer font-small stylish-color-dark pt-4 ">
     <!-- Social buttons -->
     <ul class="list-unstyled list-inline text-center">
       <li class="list-inline-item">
@@ -133,7 +133,7 @@
         </a>
       </li>
       <li class="list-inline-item">
-        <a href="https://github.com/Eddsonblanco"  class="btn-floating btn-tw mx-1">
+        <a href="https://github.com/Eddsonblanco" class="btn-floating btn-tw mx-1">
           <i class="fab fa-github"> Eddson Blanco</i>
         </a>
       </li>
@@ -143,30 +143,28 @@
         </a>
       </li>
     </ul>
-    <!-- Social buttons -->
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3 ">© 2019 Copyright
-     
     </div>
-    <!-- Copyright -->
+  </footer>
 
-</footer>
-
-<!--Firebase script link-->
-<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-firestore.js"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/js/mdb.min.js"></script>    
-<script src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
-<script src="https://code.jquery.com/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/project1.js"></script>    
-</head>
-    
+  <!--Firebase script link-->
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-firestore.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/js/mdb.min.js"></script>
+  <script src="https://teleport.org/assets/firefly/widget-snippet.min.js"></script>
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/project1.js"></script>
+  </head>
 </body>
+
 </html>
