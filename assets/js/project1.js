@@ -30,10 +30,10 @@ $.ajax({
 
    // Transfer content to HTML
 
-   $(".location").html("<h2>" + response.name + "</h2>").prepend('<i class="fas i fa-globe-americas"></i>');
-   $("#CWeather").html(" Current Weather").prepend('<i class="fas i fa-cloud-sun"></i>') 
-   $(".wind").text(" Wind Speed: " + Math.floor(response.wind.speed)).prepend('<i class="fas i fa-wind"></i>') ; 
-   $(".tmp-degree").text(" Temperature (F) " + Math.floor(response.main.temp) + "º").prepend('<i  class="fas i fa-temperature-high"></i>'); 
+  //  $(".location").html("<h2>" + response.name + "</h2>").prepend('<i class="fas i fa-globe-americas"></i>');
+  //  $("#CWeather").html(" Current Weather").prepend('<i class="fas i fa-cloud-sun"></i>') 
+  //  $(".wind").text(" Wind Speed: " + Math.floor(response.wind.speed)).prepend('<i class="fas i fa-wind"></i>') ; 
+   $(".tmp-degree").text(" Temperature: " + Math.floor(response.main.temp) + "ºF").prepend('<i  class="fas i fa-temperature-high"></i>'); 
    $(".temperature-description").text( response.weather[0].description );
 
    $("#weather-here").show();
@@ -156,9 +156,9 @@ firebase.initializeApp(config);
 var database = firebase.firestore();
 
 function displayCities(doc) {
-  var newRow = $("<tr>").addClass("compare-city").attr("data-id", doc.id).append(
-    $("<td>").text("You searched " + (doc.data().city)),
-    $("<button>").text("x").addClass("delete-button").attr("data-id", doc.id),
+  var newRow = $("<tr>").addClass("compare-city ").attr("data-id", doc.id).append(
+    $("<button>").text( doc.data().city).addClass("btn btn-light  btn-sm m-0"),
+    $("<button>").text("x").addClass("delete-button btn btn-light  btn-sm p-1 m-0").attr("data-id", doc.id),
     );
     $("#info").prepend(newRow)
     // console.log(doc.data().city);
