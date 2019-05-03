@@ -1,10 +1,10 @@
-//hide widget on page load
-$("#dump-safety-here").hide();
-$("#dump-outdoor-here").hide();
-$("#weather-here").hide();
-$(".tripRow").hide();
-$("#info").hide();
-$("#dotOnLoad").hide();
+  //hide widget on page load
+  $("#dump-safety-here").hide();
+  $("#dump-outdoor-here").hide();
+  $("#weather-here").hide();
+  $(".tripRow").hide();
+  $("#info").hide();
+  $("#dotOnLoad").hide();
 
 //--------------------------------------WEATHER API ---------------------------------------->
 function weatherApi(city) {
@@ -12,7 +12,11 @@ function weatherApi(city) {
   var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
     "q=" + city + ",Burundi&units=imperial&appid=" + APIKey;
 
+<<<<<<< HEAD
   // console.log(queryURL);
+=======
+  console.log(queryURL);
+>>>>>>> 454cc0d7e8dd0d80c5ccd9714064e4e60768c6bc
 
   // Here we run our AJAX call to the OpenWeatherMap API
   $.ajax({
@@ -21,6 +25,7 @@ function weatherApi(city) {
   })
     // We store all of the retrieved data inside of an object called "response"
     .then(function (response) {
+<<<<<<< HEAD
 
       // Log the queryURL
       //  console.log(queryURL);
@@ -36,6 +41,18 @@ function weatherApi(city) {
       $(".tmp-degree").text(" Temperature (F) " + Math.floor(response.main.temp) + "º").prepend('<i  class="fas i fa-temperature-high"></i>');
       $(".temperature-description").text(response.weather[0].description);
 
+=======
+
+      // Log the queryURL
+      console.log(queryURL);
+
+      // Log the resulting object
+      console.log(response);
+
+      // Transfer content to HTML
+      $(".tmp-degree").text(" Temperature: " + Math.floor(response.main.temp) + "ºF").prepend('<i  class="fas i fa-temperature-high"></i>');
+      $(".temperature-description").text(response.weather[0].description);
+>>>>>>> 454cc0d7e8dd0d80c5ccd9714064e4e60768c6bc
       $("#weather-here").show();
     });
 };
@@ -47,13 +64,19 @@ function weatherApi(city) {
 $(document).on("click", "#btn-submit", function (event) {
   event.preventDefault();
   var city = $("#destination").val().trim().split(" ").join("+");
+<<<<<<< HEAD
   //  var citySafety = $("#destination").val().trim().split(" ").join("-");
+=======
+>>>>>>> 454cc0d7e8dd0d80c5ccd9714064e4e60768c6bc
   var cityOutdoors = $("#destination").val().trim().split(" ").join("-");
   var lower = cityOutdoors.toLowerCase();
   var citySolo = $("#destination").val().trim();
 
   if (city === "") {
+<<<<<<< HEAD
     alert("Must enter text in the box"); //NEED TO CHANGE TO SOMETHING OTHER THAN AN ALERT!!
+=======
+>>>>>>> 454cc0d7e8dd0d80c5ccd9714064e4e60768c6bc
     return false;
   }
 
@@ -62,14 +85,20 @@ $(document).on("click", "#btn-submit", function (event) {
     date: new Date()
   });
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 454cc0d7e8dd0d80c5ccd9714064e4e60768c6bc
   weatherApi(city);
   displayUnsplashImages(city);
   outdoorWidget(lower);
 
+<<<<<<< HEAD
   //safetyWidget(citySafety); (may add back at a later date)
 
+=======
+>>>>>>> 454cc0d7e8dd0d80c5ccd9714064e4e60768c6bc
   $("#destination").val("");
 
   // hide jumbotron on click
@@ -77,9 +106,13 @@ $(document).on("click", "#btn-submit", function (event) {
 
   var cityTitle = citySolo.toUpperCase();
   $('#tripName').html("YOUR TRIP TO " + cityTitle)
+<<<<<<< HEAD
 
   $("#prevSearch").html("Previous Searches");
 
+=======
+  $("#prevSearch").html("Previous Searches");
+>>>>>>> 454cc0d7e8dd0d80c5ccd9714064e4e60768c6bc
   $(".tripRow").show();
   $("#info").show();
   $("#dotOnLoad").show()
@@ -92,6 +125,7 @@ $(document).on('click', '.delete-button', function (e) {
   id = e.target.getAttribute("data-id");
   database.collection("cities").doc(id).delete();
 });
+<<<<<<< HEAD
 
 //--------------------------------------SAFETY WIDGET -------------------------------------->
 
@@ -107,6 +141,8 @@ $(document).on('click', '.delete-button', function (e) {
 // $("#dump-safety-here").show();
 
 // }
+=======
+>>>>>>> 454cc0d7e8dd0d80c5ccd9714064e4e60768c6bc
 
 //--------------------------------------OUTDOORS WIDGET -------------------------------------->
 function outdoorWidget(cityOutdoors) {
@@ -115,11 +151,18 @@ function outdoorWidget(cityOutdoors) {
   //widget url changes via input 
   $('iframe').attr("id", "widget")
   $("#widget").attr('src', "https://teleport.org/cities/" + cityOutdoors + "/widget/outdoors/?currency=USD&citySwitcher=false")
+<<<<<<< HEAD
 
   //display on click 
   $("#dump-outdoor-here").show();
 
+=======
+
+  //display on click 
+  $("#dump-outdoor-here").show();
+>>>>>>> 454cc0d7e8dd0d80c5ccd9714064e4e60768c6bc
 }
+
 //---------------------------------------------UNSPLASH API------------------------------------------------>
 function displayUnsplashImages(city) {
   var queryURL = "https://api.unsplash.com/search/photos?page=1&query=" + city + "&client_id=98fa38e783accee54b2682447c53324d56d7375e2b0e7708a53172528b223ab7";
@@ -157,6 +200,7 @@ firebase.initializeApp(config);
 
 var database = firebase.firestore();
 
+<<<<<<< HEAD
 
 
 function displayCities(doc) {
@@ -211,6 +255,24 @@ database.collection("cities").orderBy("date", "desc").onSnapshot(snapshot => {
 })
 
 
+=======
+function displayCities(doc) {
+  var newRow = $("<tr>").addClass("compare-city ").attr("data-id", doc.id).append(
+    $("<button>").text(doc.data().city).addClass("btn btn-light  btn-sm m-0"),
+    $("<button>").text("x").addClass("delete-button btn btn-light  btn-sm p-1 m-0").attr("data-id", doc.id),
+  );
+  $("#info").prepend(newRow)
+}
+
+database.collection("cities").orderBy("date", "desc").onSnapshot(snapshot => {
+  var changes = snapshot.docChanges();
+  changes.forEach(change => {
+    if (change.type == "added") {
+      displayCities(change.doc);
+    }
+  })
+})
+>>>>>>> 454cc0d7e8dd0d80c5ccd9714064e4e60768c6bc
 
 //---------------------PREVIOUS SEARCH CLICK-------------------//
 $(document).on('click', '.compare-city', function (doc) {
@@ -231,5 +293,9 @@ $(document).on('click', '.compare-city', function (doc) {
       $('#tripName').html("YOUR TRIP TO " + cityTitle)
     }
   })
+<<<<<<< HEAD
 
 })
+=======
+})
+>>>>>>> 454cc0d7e8dd0d80c5ccd9714064e4e60768c6bc
