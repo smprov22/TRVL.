@@ -19,6 +19,9 @@ h1 {
     top:0;
     left:0;   
 }
+#dotOnLoad {
+    width: 97%;
+}
 
 #destination {
     overflow: visible;
@@ -105,6 +108,15 @@ tr {
     color: #575b59;
 }
 
+
+.btn-light{
+    background-color: white !important;
+}
+
+.p-1{
+    padding: .5rem 1.6rem !important;
+}
+
 #dump-pic-here {
     align-content: center;
     justify-content: center; 
@@ -114,7 +126,6 @@ tr {
     /* color: rgb(44, 124, 167); */
     font-size: 20px;
 }
-
 
 
 @media only screen and ( max-width: 760px) {
@@ -142,5 +153,11 @@ tr {
 .dot img {
     height: 150px;
     width:50px;
+}
+
+#dotOnLoad{
+    height: 40px;
+    width:500px;
+
 }
 }
